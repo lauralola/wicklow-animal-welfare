@@ -1,0 +1,1 @@
+web: gunicorn wicklow_animal_welfare.wsgi
