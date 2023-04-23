@@ -1,3 +1,29 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
+from django.views import generic, View
+from .models import Dog
 
-# Create your views here.
+class DogList(generic.ListView):
+    model = Dog
+    queryset = Dog.objects.filter(status=1).order_by("-created_on")
+    template_name = "index.html"
+    paginate_by = 12
+
+class DogDetail(View):
+
+    def get(self, request, slug, *args, **kwargs):
+        queryset = Dog.objects.filter(status=1)
+        dog = get_object_or_404(queryset, slug=slug)
+        comments = dog.comments.filter(approved=True).order_by("-created_on")
+        liked = False
+        if dog.likes.filter(id=self.request.user.id).exists():
+            liked = True
+
+        return render(
+            request,
+            "dog_detail.html",
+            {
+                "dog": dog,
+                "comments": comments,
+                "liked": liked
+            },
+        )
