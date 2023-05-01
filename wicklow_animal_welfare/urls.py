@@ -24,5 +24,6 @@ urlpatterns = [
     path("", include("homing.urls"), name="homing-urls"),
     path('products/', include('products.urls')),
     path('homing/', include('homing.urls')),
+    path('bag/', include('bag.urls')),
     path('summernote/',  include('django_summernote.urls'))
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
