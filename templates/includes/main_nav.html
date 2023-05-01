@@ -1,11 +1,11 @@
 <div class="collapse navbar-collapse" id="main-nav">
     <ul class="navbar-nav w-auto mx-auto">
         <li class="nav-item dropdown">
-            <a class="logo-font font-weight-bold nav-link text-black mr-5" href="#" id="homeware-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <a class="logo-font font-weight-bold nav-link text-black mr-5" href="#" id="story-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Our Story
             </a>
         <li class="nav-item dropdown">
-            <a class="logo-font font-weight-bold nav-link text-black" href="#" id="specials-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <a class="logo-font font-weight-bold nav-link text-black" href="#" id="adopting-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Getting a Dog
             </a>
             <div class="dropdown-menu border-0" aria-labelledby="specials-link">
@@ -20,17 +20,17 @@
                 Ways to Donate
             </a>
             <div class="dropdown-menu border-0" aria-labelledby="all-products-link">
-                <a href="{% url 'products' %}?category=food" class="dropdown-item">Buy Dog Food</a>
-                <a href="{% url 'products' %}?category=vet" class="dropdown-item ">Pay Vet Bills</a>
-                <a href="{% url 'products' %}?category=toys" class="dropdown-item ">Toys</a>
-                <a href="{ %url 'products'% }" class="dropdown-item">All Products</a>
+                <a href="{% url 'products' %}?sort=price&direction=asc" class="dropdown-item">By Price</a>
+                <a href="{% url 'products' %}?sort=rating&direction=desc" class="dropdown-item ">By Rating</a>
+                <a href="{% url 'products' %}?sort=category&direction=asc" class="dropdown-item ">By Category</a>
+                <a href="{% url 'products' %}" class="dropdown-item">All Products</a>
             </div>
         </li>
         <li class="nav-item dropdown">
-            <a class="logo-font font-weight-bold nav-link text-black mr-5" href="#" id="clothing-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <a class="logo-font font-weight-bold nav-link text-black mr-5" href="#" id="homing-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Dogs for Homing
             </a>
-            <div class="dropdown-menu border-0" aria-labelledby="clothing-link">
+            <div class="dropdown-menu border-0" aria-labelledby="dog-homing-link">
                 <a href="{% url 'home' %}?category=size"  class="dropdown-item">By Size</a>
                 <a href="{% url 'home' %}?category=sex"class="dropdown-item">By Sex</a>
                 <a href="{% url 'home' %}"class="dropdown-item">All Dogs</a>
