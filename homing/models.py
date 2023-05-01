@@ -28,7 +28,7 @@ class Dog(models.Model):
         ordering = ["-created_on"]
 
     def __str__(self):
-        return self.name
+        return self.dog_name
 
     def number_of_likes(self):
         return self.likes.count()
