@@ -53,7 +53,7 @@ def all_products(request):
         'current_categories': categories,
     }
 
-    return render(request, 'products/products.html', context)
+    return render(request, 'products.html', context)
 
 def product_detail(request, product_id):
     """ A view to show individual product details """
@@ -64,4 +64,4 @@ def product_detail(request, product_id):
         'product': product,
     }
 
-    return render(request, 'products/product_detail.html', context)
+    return render(request, 'product_detail.html', context)
