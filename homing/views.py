@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from django.views import generic, View
 from .models import Dog
+from .forms import DogForm
 
 class DogList(generic.ListView):
     model = Dog
@@ -27,3 +28,13 @@ class DogDetail(View):
                 "liked": liked
             },
         )
+
+def add_dog(request):
+    """ Add a dog to the page """
+    form = DogForm()
+    template = 'add_dog.html'
+    context = {
+        'form': form,
+    }
+
+    return render(request, template, context)
