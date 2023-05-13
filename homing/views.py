@@ -48,3 +48,26 @@ def add_dog(request):
     }
 
     return render(request, template, context)
+
+def edit_dog(request, product_id):
+    """ Edit a dog in the store """
+    product = get_object_or_404(Dog, pk=dog_slug)
+    if request.method == 'POST':
+        form = DogForm(request.POST, request.FILES, instance=product)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Successfully updated dog!')
+            return redirect(reverse('dog_detail', args=[dog.slug]))
+        else:
+            messages.error(request, 'Failed to update dog. Please ensure the form is valid.')
+    else:
+        form = DogForm(instance=dog)
+        messages.info(request, f'You are editing {dog.name}')
+
+    template = 'edit_dog.html'
+    context = {
+        'form': form,
+        'dog': dog,
+    }
+
+    return render(request, template, context)
