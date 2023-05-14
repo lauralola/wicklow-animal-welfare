@@ -1,5 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from django.views import generic, View
+from django.contrib.auth.decorators import login_required
 from .models import Dog
 from .forms import DogForm
 
@@ -29,8 +30,13 @@ class DogDetail(View):
             },
         )
 
+@login_required
 def add_dog(request):
     """ Add a dog to the page """
+    if not request.user.is_superuser:
+        messages.error(request, 'Sorry, only store owners can do that.')
+        return redirect(reverse('home'))
+
     if request.method == 'POST':
         form = DogForm(request.POST, request.FILES)
         if form.is_valid():
@@ -49,8 +55,13 @@ def add_dog(request):
 
     return render(request, template, context)
 
+@login_required
 def edit_dog(request, dog_id):
     """ Edit a dog in the store """
+    if not request.user.is_superuser:
+        messages.error(request, 'Sorry, only store owners can do that.')
+        return redirect(reverse('home'))
+
     product = get_object_or_404(Dog, pk=dog_id)
     if request.method == 'POST':
         form = DogForm(request.POST, request.FILES, instance=product)
@@ -72,8 +83,13 @@ def edit_dog(request, dog_id):
 
     return render(request, template, context)
 
+@login_required
 def delete_dog(request, dog_id):
     """ Delete a product from the store """
+    if not request.user.is_superuser:
+        messages.error(request, 'Sorry, only store owners can do that.')
+        return redirect(reverse('home'))
+    
     dog = get_object_or_404(Product, pk=dog_id)
     dog.delete()
     messages.success(request, 'Dog deleted!')
