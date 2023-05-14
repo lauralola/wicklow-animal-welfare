@@ -25,6 +25,12 @@
                 <p class="card-text ">
                     {{ dog.content | safe }}
                 </p>
+                {% if request.user.is_superuser %}
+                    <small class="ml-3">
+                        <a href="{% url 'edit_dog' dog.id %}">Edit</a> | 
+                        <a class="text-danger" href="{% url 'delete_dog' dog.id %}">Delete</a>
+                    </small>
+                {% endif %}
                 <div class="row">
 
                     <div class="col-1">

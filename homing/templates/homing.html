@@ -39,6 +39,12 @@
                             <hr />
                             <p class="card-text text-muted h6">{{ dog.created_on}} <i class="far fa-heart"></i>
                                 {{ dog.number_of_likes }}</p>
+                            {% if request.user.is_superuser %}
+                                <small class="ml-3">
+                                    <a href="{% url 'edit_dog' dog.id %}">Edit</a> | 
+                                    <a class="text-danger" href="{% url 'delete_dog' dog.id %}">Delete</a>
+                                </small>
+                            {% endif %}
                         </div>
                     </div>
                 </div>

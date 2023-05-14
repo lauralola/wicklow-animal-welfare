@@ -36,7 +36,7 @@ def add_dog(request):
         if form.is_valid():
             form.save()
             messages.success(request, 'Successfully added dog!')
-            return redirect(reverse('add_dog'))
+            return redirect(reverse('dog_detail', args=[dog.id]))
         else:
             messages.error(request, 'Failed to add dog. Please ensure the form is valid.')
     else:
@@ -49,15 +49,15 @@ def add_dog(request):
 
     return render(request, template, context)
 
-def edit_dog(request, product_id):
+def edit_dog(request, dog_id):
     """ Edit a dog in the store """
-    product = get_object_or_404(Dog, pk=dog_slug)
+    product = get_object_or_404(Dog, pk=dog_id)
     if request.method == 'POST':
         form = DogForm(request.POST, request.FILES, instance=product)
         if form.is_valid():
             form.save()
             messages.success(request, 'Successfully updated dog!')
-            return redirect(reverse('dog_detail', args=[dog.slug]))
+            return redirect(reverse('dog_detail', args=[dog.id]))
         else:
             messages.error(request, 'Failed to update dog. Please ensure the form is valid.')
     else:
@@ -71,3 +71,10 @@ def edit_dog(request, product_id):
     }
 
     return render(request, template, context)
+
+def delete_dog(request, dog_id):
+    """ Delete a product from the store """
+    dog = get_object_or_404(Product, pk=dog_id)
+    dog.delete()
+    messages.success(request, 'Dog deleted!')
+    return redirect(reverse('dogs'))
