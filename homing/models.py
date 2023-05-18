@@ -17,10 +17,10 @@ class Dog(models.Model):
     updated_on = models.DateTimeField(auto_now=True)
     content = models.TextField()
     created_on = models.DateTimeField(auto_now_add=True)
-    status = models.IntegerField(choices=STATUS, default=0)
-    booked = models.IntegerField(choices=BOOKED, default=0)
-    size = models.IntegerField(choices=SIZE, default=False)
-    sex = models.IntegerField(choices=SEX, default=False)
+    status = models.CharField(max_length=200, choices=STATUS, default=0)
+    booked = models.CharField(max_length=200, choices=BOOKED, default=0)
+    size = models.CharField(max_length=200, choices=SIZE, default=False)
+    sex = models.CharField(max_length=200, choices=SEX, default=False)
     likes = models.ManyToManyField(
         User, related_name='dog_like', blank=True)
 

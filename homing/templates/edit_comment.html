@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<!-- Edit Comment Form-->
+
+<div class="container-fluid">
+    <div class="row">
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button class="btn mb-4" type="submit" value="Save">Submit</button>
+        </form>
+    </div>
+</div>
+
+{%endblock%}

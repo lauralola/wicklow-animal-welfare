@@ -1,8 +1,14 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, reverse
 from django.views import generic, View
+from .models import *
+from .forms import DogForm, CommentForm
+from django.http import HttpResponseRedirect
+from django.contrib import messages
+from django.urls import reverse_lazy
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+from django.views.generic import UpdateView
+from django.contrib.messages.views import SuccessMessageMixin
 from django.contrib.auth.decorators import login_required
-from .models import Dog
-from .forms import DogForm
 
 class DogList(generic.ListView):
     model = Dog
@@ -26,9 +32,96 @@ class DogDetail(View):
             {
                 "dog": dog,
                 "comments": comments,
-                "liked": liked
+                "commented": False,
+                "liked": liked,
+                "comment_form": CommentForm()
             },
         )
+
+    def post(self, request, slug, *args, **kwargs):
+        queryset = Dog.objects.filter(status=1)
+        dog = get_object_or_404(queryset, slug=slug)
+        comments = dog.comments.filter(approved=True).order_by("-created_on")
+        liked = False
+        if dog.likes.filter(id=self.request.user.id).exists():
+            liked = True
+        comment_form = CommentForm(data=request.POST)
+
+        if comment_form.is_valid():
+            comment_form.instance.email = request.user.email
+            comment_form.instance.name = request.user.username
+            comment = comment_form.save(commit=False)
+            comment.dog = dog
+            messages.add_message(request,
+                                 messages.INFO, 'Thank you for your comment!')
+            comment.save()
+        else:
+            comment_form = CommentForm()
+
+        return render(
+            request,
+            "dog_detail.html",
+            {
+                "dog": dog,
+                "comments": comments,
+                "commented": False,
+                "liked": liked,
+                "comment_form": CommentForm()
+            },
+        )
+
+# View for liking a post
+
+class DogLike(LoginRequiredMixin, View):
+    """
+    Like/Unlike dog
+    """
+    def post(self, request, slug, *args, **kwargs):
+        dog = get_object_or_404(Recipe, slug=slug)
+        if dog.likes.filter(id=request.user.id).exists():
+            dog.likes.remove(request.user)
+            messages.success(request, 'You have unliked this post, thanks!')
+        else:
+            dog.likes.add(request.user)
+            messages.success(request, 'You have liked this post, thanks!')
+        return HttpResponseRedirect(reverse('dog_detail', args=[slug]))
+
+# View for deleting logged in user comment
+
+
+@login_required
+def delete_comment(request, comment_id):
+    """ Method to delete a comment
+    """
+    comment = get_object_or_404(Comment, id=comment_id)
+    comment.delete()
+    messages.success(request, 'Your comment was deleted successfully')
+    return HttpResponseRedirect(reverse(
+        'dog_detail', args=[comment.dog.slug]))
+
+# View for editing logged in user comment
+
+class EditComment(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
+    """
+    Edit comment
+    """
+    model = Comment
+    template_name = 'edit_comment.html'
+    form_class = CommentForm
+    success_message = 'Your comment was successfully updated'
+
+# View for searching
+
+
+def search(request):
+    if request.method == "POST":
+        searched = request.POST['searched']
+        recipes = Dog.objects.filter(content__contains=searched)
+
+        return render(request, 'search.html',
+                      {'searched': searched, 'dogs': dogs})
+    else:
+        return render(request, 'search.html', {})
 
 @login_required
 def add_dog(request):
