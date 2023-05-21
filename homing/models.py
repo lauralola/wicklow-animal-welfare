@@ -3,22 +3,21 @@ from django.contrib.auth.models import User
 from django.db.models import Q
 from cloudinary.models import CloudinaryField
 
-
 STATUS = ((0, "Draft"), (1, "Published"))
-BOOKED = ((0, "Available"), (1, "Booked"))
-SEX = ((0, "Male"), (1, "Female"))
-SIZE = ((0, "Small"), (1, "Medium"), (2, "Large"))
+BOOKED = (("Available", "Available"), ("Booked", "Booked"))
+SEX = (("Male", "Male"), ("Female", "Female"))
+SIZE = (("Small", "Small"), ("Medium", "Medium"), ("Large", "Large"))
 
 class Dog(models.Model):
     dog_name = models.CharField(max_length=200, unique=True)
     slug = models.SlugField(max_length=200, unique=True)
     featured_image = CloudinaryField('image', default='placeholder')
-    about= models.TextField(blank=True)
+    about = models.TextField(blank=True)
     updated_on = models.DateTimeField(auto_now=True)
     content = models.TextField()
     created_on = models.DateTimeField(auto_now_add=True)
-    status = models.CharField(max_length=200, choices=STATUS, default=0)
-    booked = models.CharField(max_length=200, choices=BOOKED, default=0)
+    status = models.IntegerField(choices=STATUS, default=0)
+    booked = models.CharField(max_length=200, choices=BOOKED, default='Available')
     size = models.CharField(max_length=200, choices=SIZE, default=False)
     sex = models.CharField(max_length=200, choices=SEX, default=False)
     likes = models.ManyToManyField(
@@ -41,7 +40,6 @@ class Comment(models.Model):
     email = models.EmailField()
     body = models.TextField()
     created_on = models.DateTimeField(auto_now_add=True)
-    approved = models.BooleanField(default=False)
 
     class Meta:
         ordering = ["created_on"]

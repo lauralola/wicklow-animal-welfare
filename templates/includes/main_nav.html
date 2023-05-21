@@ -6,17 +6,17 @@
             </a>
         <li class="nav-item dropdown">
             <a class="logo-font font-weight-bold nav-link text-black" href="#" id="adopting-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Getting a Dog
+                Ways to Help
             </a>
             <div class="dropdown-menu border-0" aria-labelledby="specials-link">
-                <a href="{% url 'our_story' %}/#donate" class="dropdown-item">Why Donate?</a>
-                <a href="{% url 'our_story' %}/#adopt"  class="dropdown-item">Why adopt?</a>
-                <a href="{% url 'our_story' %}/#volunteer" class="dropdown-item">Volunteer or Foster</a> 
+                <a href="{% url 'home' %}#donate" class="dropdown-item">Why Donate?</a>
+                <a href="{% url 'home' %}#adopt"  class="dropdown-item">Why adopt?</a>
+                <a href="{% url 'home' %}#volunteer" class="dropdown-item">Volunteer or Foster</a> 
             </div>
         </li>
         <li class="nav-item dropdown">
             <a class="logo-font font-weight-bold nav-link text-black mr-5" href="{% url 'products' %}" id="all-products-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Ways to Donate
+                Donate
             </a>
             <div class="dropdown-menu border-0" aria-labelledby="all-products-link">
                 <a href="{% url 'products' %}?sort=price&direction=asc" class="dropdown-item">By Price</a>
@@ -27,7 +27,7 @@
         </li>
         <li class="nav-item dropdown">
             <a class="logo-font font-weight-bold nav-link text-black mr-5" href="{% url 'homing' %}" id="homing-link" aria-haspopup="true" aria-expanded="false">
-                Dogs for Homing
+                Adopt
             </a>
         </li>
     </ul>

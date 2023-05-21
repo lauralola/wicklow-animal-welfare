@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404, reverse
+from django.shortcuts import render, get_object_or_404, reverse, redirect
 from django.views import generic, View
 from .models import *
 from .forms import DogForm, CommentForm
@@ -21,7 +21,7 @@ class DogDetail(View):
     def get(self, request, slug, *args, **kwargs):
         queryset = Dog.objects.filter(status=1)
         dog = get_object_or_404(queryset, slug=slug)
-        comments = dog.comments.filter(approved=True).order_by("-created_on")
+        comments = dog.comments.order_by("-created_on")
         liked = False
         if dog.likes.filter(id=self.request.user.id).exists():
             liked = True
@@ -32,7 +32,6 @@ class DogDetail(View):
             {
                 "dog": dog,
                 "comments": comments,
-                "commented": False,
                 "liked": liked,
                 "comment_form": CommentForm()
             },
@@ -41,7 +40,7 @@ class DogDetail(View):
     def post(self, request, slug, *args, **kwargs):
         queryset = Dog.objects.filter(status=1)
         dog = get_object_or_404(queryset, slug=slug)
-        comments = dog.comments.filter(approved=True).order_by("-created_on")
+        comments = dog.comments.order_by("-created_on")
         liked = False
         if dog.likes.filter(id=self.request.user.id).exists():
             liked = True
@@ -64,7 +63,6 @@ class DogDetail(View):
             {
                 "dog": dog,
                 "comments": comments,
-                "commented": False,
                 "liked": liked,
                 "comment_form": CommentForm()
             },
@@ -77,7 +75,7 @@ class DogLike(LoginRequiredMixin, View):
     Like/Unlike dog
     """
     def post(self, request, slug, *args, **kwargs):
-        dog = get_object_or_404(Recipe, slug=slug)
+        dog = get_object_or_404(Dog, slug=slug)
         if dog.likes.filter(id=request.user.id).exists():
             dog.likes.remove(request.user)
             messages.success(request, 'You have unliked this post, thanks!')
@@ -87,7 +85,6 @@ class DogLike(LoginRequiredMixin, View):
         return HttpResponseRedirect(reverse('dog_detail', args=[slug]))
 
 # View for deleting logged in user comment
-
 
 @login_required
 def delete_comment(request, comment_id):
@@ -110,32 +107,19 @@ class EditComment(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
     form_class = CommentForm
     success_message = 'Your comment was successfully updated'
 
-# View for searching
-
-
-def search(request):
-    if request.method == "POST":
-        searched = request.POST['searched']
-        recipes = Dog.objects.filter(content__contains=searched)
-
-        return render(request, 'search.html',
-                      {'searched': searched, 'dogs': dogs})
-    else:
-        return render(request, 'search.html', {})
-
 @login_required
 def add_dog(request):
     """ Add a dog to the page """
     if not request.user.is_superuser:
         messages.error(request, 'Sorry, only store owners can do that.')
         return redirect(reverse('home'))
-
+    
     if request.method == 'POST':
         form = DogForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
             messages.success(request, 'Successfully added dog!')
-            return redirect(reverse('dog_detail', args=[dog.id]))
+            return redirect(reverse('homing'))
         else:
             messages.error(request, 'Failed to add dog. Please ensure the form is valid.')
     else:
@@ -155,18 +139,18 @@ def edit_dog(request, dog_id):
         messages.error(request, 'Sorry, only store owners can do that.')
         return redirect(reverse('home'))
 
-    product = get_object_or_404(Dog, pk=dog_id)
+    dog = get_object_or_404(Dog, pk=dog_id)
     if request.method == 'POST':
-        form = DogForm(request.POST, request.FILES, instance=product)
+        form = DogForm(request.POST, request.FILES, instance=dog)
         if form.is_valid():
             form.save()
             messages.success(request, 'Successfully updated dog!')
-            return redirect(reverse('dog_detail', args=[dog.id]))
+            return redirect(reverse('homing'))
         else:
             messages.error(request, 'Failed to update dog. Please ensure the form is valid.')
     else:
         form = DogForm(instance=dog)
-        messages.info(request, f'You are editing {dog.name}')
+        messages.info(request, f'You are editing {dog.dog_name}')
 
     template = 'edit_dog.html'
     context = {
@@ -183,7 +167,7 @@ def delete_dog(request, dog_id):
         messages.error(request, 'Sorry, only store owners can do that.')
         return redirect(reverse('home'))
     
-    dog = get_object_or_404(Product, pk=dog_id)
+    dog = get_object_or_404(Dog, pk=dog_id)
     dog.delete()
     messages.success(request, 'Dog deleted!')
-    return redirect(reverse('dogs'))
+    return redirect(reverse('homing'))
