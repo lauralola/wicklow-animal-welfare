@@ -21,25 +21,10 @@ body {
     background-color:  rgba(46, 49, 49, .6);
 }
 
-#cover-text, #cover-text h2{
-        color: #c7ddc7;
-        font-size: 60%;
-        text-transform: uppercase;
-        letter-spacing: 4px;
-        text-align: center;
-        width:350px;
-        height:165px;
-        padding: 10px;
-        background-color: rgba(46, 49, 49, .6);
-        top: 30px;
-        right: 100px;
-        position:absolute;
-    }
-
 #mat{
     height: 600px;
     width: 100%;
-    background-image: url('/media/homepage_background_cropped.jpg');
+    background-image: url('https://res.cloudinary.com/dv4q4bymn/image/upload/v1678522716/static/images/image_bk.c83a4a80bf3b.jpg');
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
@@ -48,106 +33,112 @@ body {
     padding:0;
 }
 
-a{
-    color: #000;
+#cover-text{
+    font-size: 60%;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    text-align: center;
+    width:350px;
+    height:165px;
+    padding: 10px;
+    background-color: rgba(46, 49, 49, .6);
+    top: 30px;
+    right: 100px;
+    position:absolute;
 }
 
-/* from Bulma */
-.icon {
-    align-items: center;
-    display: inline-flex;
-    justify-content: center;
-    height: 1.5rem;
-    width: 1.5rem;
+.light-bg {
+    background-color:#9fceb8;
 }
 
-.logo-font {
+.dark-bg {
+    background-color: #353b41;
+}
+
+.main-bg {
+    background-color: #e1e3e9;
+}
+
+.card {
+    border: none;
+    background-color: transparent;
+}
+
+.image-container {
+    position: relative;
+}
+
+.image-flash {
+    position: absolute;
+    bottom: 5%;
+    min-width: 30%;
+    left: -2px;
+    background-color: #353b41;
+}
+
+.author {
+    color: #c7ddc7;
+    margin-left: 5%;
     text-transform: uppercase;
 }
 
-.main-logo-link {
-    width: fit-content;
+.masthead {
+    margin-top: 10px;
+    overflow: hidden;
+    position: relative;
+    display: inline-block;
+    height: 33vh;
+    width: 100%;
 }
 
-.shop-now-button {
-    background: black;
-    color: white;
-    min-width: 260px;
+.masthead-text {
+    background-color: #353b41;
+    color:#c7ddc7;
+    position: relative;
 }
 
-.btn-black {
-    background: black;
-    color: white;
+.masthead-image {
+    position: relative;
+    overflow: hidden;
 }
 
-.btn-outline-black {
-    background: white;
-    color: black !important; /* use important to override link colors for <a> elements */
-    border: 1px solid black;
+.post-link {
+    text-decoration: none;
+    color: #080808;
 }
 
-.btn-outline-black:hover,
-.btn-outline-black:active,
-.btn-outline-black:focus {
-    background: black;
-    color: white !important;
+a {
+    text-decoration: none !important;
+    color: #080808  !important;
 }
 
-.shop-now-button:hover,
-.shop-now-button:active,
-.shop-now-button:focus,
-.btn-black:hover,
-.btn-black:active,
-.btn-black:focus {
-    background: #222;
-    color: white;
+.post-link:hover,
+.page-link {
+    color:darkolivegreen;
 }
 
-.text-black {
-    color: #000 !important;
+.btn {
+    background-color: #c7ddc7 !important;
+    color: #222427 !important;
 }
 
-.border-black {
-    border: 1px solid black !important;
+.recipe-title {
+    margin-top: 10%;
+    margin-left: 5%;
 }
 
-.bg-black {
-    background: #000 !important;
+.nav-link {
+    color:  #c7ddc7;
+    text-decoration: none;
 }
 
-.overlay {
-	height: 100%;
-	width: 100%;
-    padding-top: 100px;
-	top: 0;
-	left: 0;
-	position: fixed;
-	background: white;
-	z-index: -1;
+.nav-link:hover,
+.nav-link:active {
+    color: #445261;
+    text-decoration: underline;
 }
 
-a.category-badge > span.badge:hover {
-    background: #212529 !important;
-    color: #fff !important;
-}
-
-.btt-button {
-    height: 42px;
-    width: 42px;
-    position: fixed;
-    bottom: 10px;
-    right: 10px;
-}
-
-.btt-link,
-.update-link,
-.remove-item {
-    cursor: pointer;
-}
-
-input[name='q']::placeholder {
-    color: #aab7c4;
-}
+.like { margin: 0 10px; }
 
 /* ------------------------------- bootstrap toasts */
 

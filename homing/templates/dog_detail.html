@@ -1,152 +1,162 @@
-{% extends 'base.html' %} {% block content %}
+{% extends 'base.html' %} 
+{%load static%}
+
+{% block page_header %}
+    <div class="container header-container">
+        <div class="row">
+            <div class="col"></div></div>
+    </div>
+{% endblock %}
+
+{% block content %}
 {% load crispy_forms_tags %}
 
-<div class="masthead">
-    <div class="container">
-        <div class="row g-0">
-            <div class="col-md-6 masthead-text">
-                <h1 class="post-title">{{ dog.dog_name }}</h1>
-                <p class="post-subtitle">{{ dog.size}} | {{ dog.created_on }}</p>
-            </div>
-            <div class="d-none d-md-block col-md-6 masthead-image">
-                {% if "placeholder" in dog.featured_image.url %}
-                <img src="https://codeinstitute.s3.amazonaws.com/fullstack/blog/default.jpg" width="100%">
-                {% else %}
-                <img src=" {{ dog.featured_image.url }}" width="100%">
-                {% endif %}
+    <div class="masthead">
+        <div class="container">
+            <div class="row g-0">
+                <div class="col-md-6 masthead-text">
+                    <h1 class="post-title">{{ dog.dog_name }}</h1>
+                    <p class="post-subtitle">{{ dog.size}} | {{ dog.created_on }}</p>
+                </div>
+                <div class="d-none d-md-block col-md-6 masthead-image">
+                    {% if "placeholder" in dog.featured_image.url %}
+                    <img src="https://codeinstitute.s3.amazonaws.com/fullstack/blog/default.jpg" width="100%">
+                    {% else %}
+                    <img src=" {{ dog.featured_image.url }}" width="100%">
+                    {% endif %}
+                </div>
             </div>
         </div>
     </div>
-</div>
 
-<div class="container">
-    <div class="row">
-        <div class="col card mb-4  mt-3 left  top">
-            <div class="card-body">
-                <p class="card-text ">
-                    {{ dog.content | safe }}
-                </p>
-                {% if request.user.is_superuser %}
-                    <small class="ml-3">
-                        <a href="{% url 'edit_dog' dog.id %}">Edit</a> | 
-                        <a class="text-danger" href="{% url 'delete_dog' dog.id %}">Delete</a>
-                    </small>
-                {% endif %}
-                <!-- Like button functionality -->
-                <div class="row">
-                    <div class="col-1 like">
-                        {% if user.is_authenticated %}
-                        <form class="d-inline" action="{% url 'dog_like' dog.slug %}" method="POST">
-                            {% csrf_token %}
-                            <button type="submit" name="dog_id" value="{{ dog.slug}}" class="btn">
-                                <span> <i class="{% if liked %}fas{% else %}far{% endif %} fa-heart"></i>{{ dog.number_of_likes }}</span>
-                            </button>
-                        </form>
-                        {% else %}
-                        <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#like-login"><i class="far fa-heart"></i>{{ dog.number_of_likes }}</button>
-                        <!-- Login bootstrap modal-->
-                        <div class="modal" id="like-login" tabindex="-1" role="dialog">
-                            <div class="modal-dialog" role="document">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title">Login</h5>
-                                        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                        </button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <p>You must login to like a dog</p>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <a href="{% url 'account_login' %}" class="btn btn-primary" aria-label="Login">Login</a>
-                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+    <div class="container">
+        <div class="row">
+            <div class="col card mb-4  mt-3 left  top">
+                <div class="card-body">
+                    <p class="card-text ">
+                        {{ dog.content | safe }}
+                    </p>
+                    {% if request.user.is_superuser %}
+                        <small class="ml-3">
+                            <a href="{% url 'edit_dog' dog.id %}">Edit</a> | 
+                            <a class="text-danger" href="{% url 'delete_dog' dog.id %}">Delete</a>
+                        </small>
+                    {% endif %}
+                    <!-- Like button functionality -->
+                    <div class="row">
+                        <div class="col-1 like">
+                            {% if user.is_authenticated %}
+                            <form class="d-inline" action="{% url 'dog_like' dog.slug %}" method="POST">
+                                {% csrf_token %}
+                                <button type="submit" name="dog_id" value="{{ dog.slug}}" class="btn">
+                                    <span> <i class="{% if liked %}fas{% else %}far{% endif %} fa-heart"></i>{{ dog.number_of_likes }}</span>
+                                </button>
+                            </form>
+                            {% else %}
+                            <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#like-login"><i class="far fa-heart"></i>{{ dog.number_of_likes }}</button>
+                            <!-- Login bootstrap modal-->
+                            <div class="modal" id="like-login" tabindex="-1" role="dialog">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title">Login</h5>
+                                            <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <p>You must login to like a dog</p>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <a href="{% url 'account_login' %}" class="btn btn-primary" aria-label="Login">Login</a>
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
+                            {% endif %}
                         </div>
-                        {% endif %}
-                    </div>
-                    <!-- Comment numbers -->
-                    <div class="col-1 like">
-                        {% with comments.count as total_comments %}
-                        <strong class="btn"><i class="far fa-comments"></i>
-                            {{ total_comments }}</strong>
-                        {% endwith %}
+                        <!-- Comment numbers -->
+                        <div class="col-1 like">
+                            {% with comments.count as total_comments %}
+                            <strong class="btn"><i class="far fa-comments"></i>
+                                {{ total_comments }}</strong>
+                            {% endwith %}
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    <div class="row">
-        <div class="col">
-            <hr>
+        <div class="row">
+            <div class="col">
+                <hr>
+            </div>
         </div>
-    </div>
-    <!-- Comments posted-->
-    <div class="row">
-        <div class="col-md-8 card mb-4  mt-3 ">
-            <h3>Comments:</h3>
-            <div class="card-body">
-                {% for comment in comments %}
-                <div class="comments" style="padding: 10px;">
-                    <p class="font-weight-bold">
-                        {{comment.name}}
-                        <span class="font-weight-normal">
-                            {{comment.created_on}}
-                        </span> wrote:
-                    </p>
-                    {{ comment.body | linebreaks }}
-                </div>
-                <!-- Links to edit, delete and login -->
-                {% if user.is_authenticated and user.username == comment.name or user.is_superuser %}
-                <a href="{% url 'edit_comment' comment.id %}" class="btn" aria-label="Go to the Edit Comments Page">Edit</a>
-                <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#delete-comment">Delete</button>
-                    <!-- Delete comment bootstrap modal-->
-                <div class="modal" id="delete-comment" tabindex="-1" role="dialog">
-                    <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title">Delete Comment</h5>
-                                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div class="modal-body">
-                                <p>Are you sure you want to delete your comment?</p>
-                            </div>
-                            <div class="modal-footer">
-                                <a href="{% url 'delete_comment' comment.pk %}" class="btn btn-primary" aria-label="Delete Comment">Delete</a>
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <!-- Comments posted-->
+        <div class="row">
+            <div class="col-md-8 card mb-4  mt-3 ">
+                <h3>Comments:</h3>
+                <div class="card-body">
+                    {% for comment in comments %}
+                    <div class="comments" style="padding: 10px;">
+                        <p class="font-weight-bold">
+                            {{comment.name}}
+                            <span class="font-weight-normal">
+                                {{comment.created_on}}
+                            </span> wrote:
+                        </p>
+                        {{ comment.body | linebreaks }}
+                    </div>
+                    <!-- Links to edit, delete and login -->
+                    {% if user.is_authenticated and user.username == comment.name or user.is_superuser %}
+                    <a href="{% url 'edit_comment' comment.id %}" class="btn" aria-label="Go to the Edit Comments Page">Edit</a>
+                    <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#delete-comment">Delete</button>
+                        <!-- Delete comment bootstrap modal-->
+                    <div class="modal" id="delete-comment" tabindex="-1" role="dialog">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title">Delete Comment</h5>
+                                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <p>Are you sure you want to delete your comment?</p>
+                                </div>
+                                <div class="modal-footer">
+                                    <a href="{% url 'delete_comment' comment.pk %}" class="btn btn-primary" aria-label="Delete Comment">Delete</a>
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                </div>
                             </div>
                         </div>
                     </div>
+                    {% else %}
+                    {% if user.is_authenticated and user.username != comment.name %}
+                    <br>
+                    {% else %}
+                    <a  href="{% url 'account_login' %}" class="btn" aria-label="Go to the Login Page">Please login to edit or delete your comments</a>
+                    {% endif %}
+                    {% endif %}
+                    {% endfor%}
                 </div>
-                {% else %}
-                {% if user.is_authenticated and user.username != comment.name %}
-                <br>
-                {% else %}
-                <a  href="{% url 'account_login' %}" class="btn" aria-label="Go to the Login Page">Please login to edit or delete your comments</a>
-                {% endif %}
-                {% endif %}
-                {% endfor%}
             </div>
-        </div>
-        <!-- Commenting area for users -->
-        <div class="col-md-4 card mb-4  mt-3 ">
-            <div class="card-body">
-                {% if user.is_authenticated %}
+            <!-- Commenting area for users -->
+            <div class="col-md-4 card mb-4  mt-3 ">
+                <div class="card-body">
+                    {% if user.is_authenticated %}
 
-                <h3>Leave a comment:</h3>
-                <p>Posting as: {{ user.username }}</p>
-                <form method="post" style="margin-top: 1.3em;">
-                    {{ comment_form | crispy }}
-                    {% csrf_token %}
-                    <button type="submit" class="btn">Submit</button>
-                </form>
-                {% endif %}
+                    <h3>Leave a comment:</h3>
+                    <p>Posting as: {{ user.username }}</p>
+                    <form method="post" style="margin-top: 1.3em;">
+                        {{ comment_form | crispy }}
+                        {% csrf_token %}
+                        <button type="submit" class="btn">Submit</button>
+                    </form>
+                    {% endif %}
+                </div>
             </div>
         </div>
     </div>
-</div>
 
 {% endblock content %}
