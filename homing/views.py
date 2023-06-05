@@ -4,21 +4,24 @@ from .models import *
 from .forms import DogForm, CommentForm
 from django.http import HttpResponseRedirect
 from django.contrib import messages
-from django.urls import reverse_lazy
-from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import UpdateView
 from django.contrib.messages.views import SuccessMessageMixin
 from django.contrib.auth.decorators import login_required
 
+
 class DogList(generic.ListView):
+
     model = Dog
     queryset = Dog.objects.filter(status=1).order_by("-created_on")
     template_name = "homing.html"
     paginate_by = 12
 
+
 class DogDetail(View):
 
     def get(self, request, slug, *args, **kwargs):
+
         queryset = Dog.objects.filter(status=1)
         dog = get_object_or_404(queryset, slug=slug)
         comments = dog.comments.order_by("-created_on")
@@ -38,6 +41,7 @@ class DogDetail(View):
         )
 
     def post(self, request, slug, *args, **kwargs):
+
         queryset = Dog.objects.filter(status=1)
         dog = get_object_or_404(queryset, slug=slug)
         comments = dog.comments.order_by("-created_on")
@@ -70,11 +74,14 @@ class DogDetail(View):
 
 # View for liking a post
 
+
 class DogLike(LoginRequiredMixin, View):
+
     """
     Like/Unlike dog
     """
     def post(self, request, slug, *args, **kwargs):
+
         dog = get_object_or_404(Dog, slug=slug)
         if dog.likes.filter(id=request.user.id).exists():
             dog.likes.remove(request.user)
@@ -86,8 +93,10 @@ class DogLike(LoginRequiredMixin, View):
 
 # View for deleting logged in user comment
 
+
 @login_required
 def delete_comment(request, comment_id):
+
     """ Method to delete a comment
     """
     comment = get_object_or_404(Comment, id=comment_id)
@@ -98,7 +107,9 @@ def delete_comment(request, comment_id):
 
 # View for editing logged in user comment
 
+
 class EditComment(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
+
     """
     Edit comment
     """
@@ -107,13 +118,15 @@ class EditComment(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
     form_class = CommentForm
     success_message = 'Your comment was successfully updated'
 
+
 @login_required
 def add_dog(request):
+
     """ Add a dog to the page """
     if not request.user.is_superuser:
         messages.error(request, 'Sorry, only store owners can do that.')
         return redirect(reverse('home'))
-    
+
     if request.method == 'POST':
         form = DogForm(request.POST, request.FILES)
         if form.is_valid():
@@ -121,10 +134,10 @@ def add_dog(request):
             messages.success(request, 'Successfully added dog!')
             return redirect(reverse('homing'))
         else:
-            messages.error(request, 'Failed to add dog. Please ensure the form is valid.')
+            messages.error(request, 'Failed to add dog. Please check form')
     else:
         form = DogForm()
-        
+
     template = 'add_dog.html'
     context = {
         'form': form,
@@ -132,9 +145,11 @@ def add_dog(request):
 
     return render(request, template, context)
 
+
 @login_required
 def edit_dog(request, dog_id):
-    """ Edit a dog in the store """
+
+    """ Edit a dog profile"""
     if not request.user.is_superuser:
         messages.error(request, 'Sorry, only store owners can do that.')
         return redirect(reverse('home'))
@@ -147,7 +162,7 @@ def edit_dog(request, dog_id):
             messages.success(request, 'Successfully updated dog!')
             return redirect(reverse('homing'))
         else:
-            messages.error(request, 'Failed to update dog. Please ensure the form is valid.')
+            messages.error(request, 'Failed to update. Please check form')
     else:
         form = DogForm(instance=dog)
         messages.info(request, f'You are editing {dog.dog_name}')
@@ -160,13 +175,15 @@ def edit_dog(request, dog_id):
 
     return render(request, template, context)
 
+
 @login_required
 def delete_dog(request, dog_id):
-    """ Delete a product from the store """
+
+    """ Delete a dog profile """
     if not request.user.is_superuser:
         messages.error(request, 'Sorry, only store owners can do that.')
         return redirect(reverse('home'))
-    
+
     dog = get_object_or_404(Dog, pk=dog_id)
     dog.delete()
     messages.success(request, 'Dog deleted!')

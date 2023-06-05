@@ -1,6 +1,5 @@
 from django.db import models
 from django.contrib.auth.models import User
-from django.db.models import Q
 from cloudinary.models import CloudinaryField
 
 STATUS = ((0, "Draft"), (1, "Published"))
@@ -8,7 +7,9 @@ BOOKED = (("Available", "Available"), ("Booked", "Booked"))
 SEX = (("Male", "Male"), ("Female", "Female"))
 SIZE = (("Small", "Small"), ("Medium", "Medium"), ("Large", "Large"))
 
+
 class Dog(models.Model):
+
     dog_name = models.CharField(max_length=200, unique=True)
     slug = models.SlugField(max_length=200, unique=True)
     featured_image = CloudinaryField('image', default='placeholder')
@@ -17,7 +18,8 @@ class Dog(models.Model):
     content = models.TextField()
     created_on = models.DateTimeField(auto_now_add=True)
     status = models.IntegerField(choices=STATUS, default=0)
-    booked = models.CharField(max_length=200, choices=BOOKED, default='Available')
+    booked = models.CharField(max_length=200, choices=BOOKED,
+                              default='Available')
     size = models.CharField(max_length=200, choices=SIZE, default=False)
     sex = models.CharField(max_length=200, choices=SEX, default=False)
     likes = models.ManyToManyField(
@@ -35,7 +37,7 @@ class Dog(models.Model):
 
 class Comment(models.Model):
     dog = models.ForeignKey(Dog, on_delete=models.CASCADE,
-                             related_name="comments")
+                            related_name="comments")
     username = models.CharField(max_length=80)
     email = models.EmailField()
     body = models.TextField()
@@ -46,4 +48,3 @@ class Comment(models.Model):
 
     def __str__(self):
         return f"Comment {self.body} by {self.name}"
-

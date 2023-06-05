@@ -7,7 +7,6 @@ import json
 import os
 import requests
 import shutil
-import subprocess
 import sys
 from os.path import exists
 
@@ -48,7 +47,8 @@ UPGRADE_FILE_LIST = [{"filename": ".vscode/settings.json",
                      },
                      {"filename": ".vscode/arctictern.py",
                       "url": ".vscode/arctictern.py"
-                     }]
+                     }
+                    ]
 
 FINAL_LINES = "\nexport POST_UPGRADE_RUN=1\nsource ~/.bashrc\n"
 
@@ -60,8 +60,7 @@ def get_versions():
             THIS_VERSION = float(f.read().strip())
     else:
         with open(".vscode/version.txt", "w") as f:
-            f.write(str(THIS_VERSION))
-    
+            f.write(str(THIS_VERSION))    
     r = requests.get(BASE_URL + ".vscode/version.txt")
     CURRENT_VERSION = float(r.content)
 
@@ -69,6 +68,7 @@ def get_versions():
             "current_version": CURRENT_VERSION}
 
 def needs_upgrade():
+
     """
     Checks the version of the current template against
     this version.
@@ -97,7 +97,7 @@ def build_post_upgrade():
     upgrades = json.loads(r.content.decode("utf-8"))
     content = ""
 
-    for k,v in upgrades.items():
+    for k, v in upgrades.items():
         if float(k) > THIS_VERSION:
             print(f"Adding version changes for {k} to post_upgrade.sh")
             content += v
@@ -105,8 +105,7 @@ def build_post_upgrade():
     if content:
         content += FINAL_LINES
         with open(".vscode/post_upgrade.sh", "w") as f:
-            f.writelines(content)
-    
+            f.writelines(content)    
     print("Built post_upgrade.sh. Restart your workspace for it to take effect.")
 
 

@@ -1,7 +1,7 @@
-from decimal import Decimal
 from django.conf import settings
 from django.shortcuts import get_object_or_404
 from products.models import Product
+
 
 def bag_contents(request):
 
@@ -24,9 +24,7 @@ def bag_contents(request):
         tax_back_delta = settings.TAX_BACK_THRESHOLD - total
     else:
         tax_back_delta = 0
-    
     order_total = total
-    
     context = {
         'bag_items': bag_items,
         'total': total,
