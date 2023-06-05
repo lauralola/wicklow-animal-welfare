@@ -22,6 +22,7 @@
         {% endblock %}
 
         {% block extra_css %}
+        <link href="//cdn-images.mailchimp.com/embedcode/classic-071822.css" rel="stylesheet" type="text/css">
         {% endblock %}
 
         {% block corejs %}
@@ -146,19 +147,16 @@
         {% endblock %}
 
         <!-- Footer -->
-        <footer class="footer mt-auto py-3 bg-black">
-            <p class="m-0 text-center text-white">Please Contact Us to Adopt</p>
-            <p class="m-0 text-center text-white">
-                <a href="https://www.facebook.com/" class="text-white" target="_blank"><i class="fab fa-facebook-square ms-3"></i></a>
-                <a href="https://twitter.com/?lang=en" class="text-white" target="_blank"><i class="fab fa-twitter-square ms-3"></i></a>
-                <a href="https://www.instagram.com/" class="text-white" target="_blank"><i class="fab fa-instagram-square ms-3"></i></a>
-                <a href="https://www.youtube.com/premium" class="text-white" target="_blank"><i class="fab fa-youtube-square ms-3"></i></a></p>
+        <footer class="mt-auto w-100" id="footer-css">
+            {% include 'includes/footer.html' %}
         </footer>
 
         {% block postloadjs %}
         <script type="text/javascript">
             $('.toast').toast('show');
         </script>
+
+        <script type='text/javascript' src='//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js'></script><script type='text/javascript'>(function($) {window.fnames = new Array(); window.ftypes = new Array();fnames[0]='EMAIL';ftypes[0]='email';fnames[1]='FNAME';ftypes[1]='text';fnames[2]='LNAME';ftypes[2]='text';fnames[3]='ADDRESS';ftypes[3]='address';fnames[4]='PHONE';ftypes[4]='phone';fnames[5]='BIRTHDAY';ftypes[5]='birthday';}(jQuery));var $mcj = jQuery.noConflict(true);</script>    
         {% endblock %}
     </body>
 </html>
