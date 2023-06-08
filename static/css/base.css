@@ -88,6 +88,7 @@ body {
 
 .dark-bg {
     background-color: #353b41;
+    color: #9fceb8 !important;
 }
 
 .main-bg {
@@ -155,6 +156,7 @@ a {
 .btn {
     background-color: #c7ddc7 !important;
     color: #222427 !important;
+    border: #000;
 }
 
 .recipe-title {
@@ -194,7 +196,6 @@ a {
 
 /* Mailchimp form */
 #mc_embed_signup{
-    background: #c7ddc7; 
     clear:left; 
     padding: 0%;
     width:400px;}

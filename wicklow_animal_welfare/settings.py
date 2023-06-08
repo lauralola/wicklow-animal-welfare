@@ -30,7 +30,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['wicklow-animal-welfare.herokuapp.com', 'localhost', '8000-lauralola-wicklowanimal-z1n3fh4kxoy.ws-eu98.gitpod.io']
+ALLOWED_HOSTS = ['wicklow-animal-welfare.herokuapp.com', 'localhost', '8000-lauralola-wicklowanimal-z1n3fh4kxoy.ws-eu99.gitpod.io']
 
 
 # Application definition
