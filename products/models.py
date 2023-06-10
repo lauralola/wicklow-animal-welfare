@@ -1,5 +1,7 @@
 from django.db import models
 from cloudinary.models import CloudinaryField
+from django.contrib.auth.models import User
+from django.db.models import Avg
 
 
 class Category(models.Model):
@@ -24,9 +26,19 @@ class Product(models.Model):
     name = models.CharField(max_length=254)
     description = models.TextField()
     price = models.DecimalField(max_digits=6, decimal_places=2)
-    rating = models.DecimalField(max_digits=6, decimal_places=2,
-                                 null=True, blank=True)
     featured_image = CloudinaryField('image', default='placeholder')
 
+    def average_rating(self) -> float:
+        return Rating.objects.filter(product=self).aggregate(Avg("rating"))["rating__avg"] or 0
+
     def __str__(self):
-        return self.name
+        return f"{self.name}: {self.average_rating()}"
+
+
+class Rating(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    rating = models.IntegerField(default=0)
+
+    def __str__(self):
+        return f"{self.product.name}: {self.rating}"

@@ -177,6 +177,27 @@ a {
 
 .like { margin: 0 10px; }
 
+/* ------------------------------- rating */
+
+.rating-list li {
+    float: right;
+    color: #444343;
+    padding: 10px 5px;
+  }
+
+  .rating-list li:hover,
+  .rating-list li:hover ~ li {
+    color: orange;
+  }
+
+  .rating-list {
+    display: inline-block;
+    list-style: none;
+  }
+  .checked {
+      color: orange;
+  }
+
 /* ------------------------------- bootstrap toasts */
 
 .message-container {

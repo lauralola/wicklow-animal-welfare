@@ -492,7 +492,7 @@ Wicklow Animal Welfare uses [Google Fonts](https://fonts.google.com/) for its ty
 
 ### Sign-Up Page
 
-![Sign Up Page](readme/images/sign-up.png)
+![Sign Up Page](readme/images/sign_up.png)
 
 The sign-up page was created to allow users to register their details and sign-up for an account. On successful form submission the user is redirected to the sign in page to sign into their new account.
 
@@ -502,7 +502,7 @@ The sign-up page was created to allow users to register their details and sign-u
 
 ### Sign-In Page
 
-![Sign In Page](readme/images/sign-in.png)
+![Sign In Page](readme/images/sign_in.png)
 
 The sign-in page was created to allow users to sign into their account to access features. On successful form submission, the user is redirected to the homepage.
 
@@ -545,7 +545,7 @@ The products page is available to view for both authenticated and non-authentica
 [Back to top](<#contents>)
 
 ### Product Detail Page
-![Product Detail Page](readme/images/products-detail-page.png)
+![Product Detail Page](readme/images/product-detail-page.png)
 
 The product detail page is available to view for both authenticated and non-authenticated users. Clicking on the image of a production the main page will open the detail on that product. This displays more information and an area to add the product to the bag. A success message confirming this is given if added or updated here. 
 
@@ -585,7 +585,7 @@ The shopping bag page opens when the bag icon on the top right of the screen is 
 
 ### Checkout Page
 
-![Checkout Page](readme/images/checkout-page.png)
+![Checkout Page](readme/images/checkout.png)
 
 The user is asked to complete a form with their details and an order summary is displayed. They can save the details completed to their profile by leaving the box for this checked. The user is asked for their card details. A warning that their card will be charged the amount displayed is given before the complete order button. If user information has not been correctly completed in the correct format the user is redirected back to this section of the page to rectify. If submitted successfully the user is directed to the checkout success page. 
 
@@ -632,7 +632,7 @@ The delete dog is available to authenticated admin users. There is no page for d
 
 ### Dog Management Form
 
-![Dog Management Form](readme/images/dog-management-form.png)
+![Dog Management Form](readme/images/dog-management.png)
 
 The dog management form is only available to authenticated users via their account tab. If non-authenticated users try to access this page they are redirected to the home page. The page features the blank dog form. On successful submission, the user is redirected to the homing page with the new dog visible as a card. If the user clicks the cancel button they are returned to the previous page they were on. 
 
@@ -640,7 +640,7 @@ The dog management form is only available to authenticated users via their accou
 
 ### Profile Page
 
-![Profile Page](readme/images/profile-page.png)
+![Profile Page](readme/images/profile.png)
 
 The user profile page is only visible to authenticated users. Here any saved information is displayed and can be edited and details of previous orders are visible. Details can be edited and updated by completing and selecting the update tab. A success message will appear is correct. Orders can also be opened from here by selecting the order number to see more details on the order. 
 
@@ -648,7 +648,7 @@ The user profile page is only visible to authenticated users. Here any saved inf
 
 ### Dog Detail Page - Comments
 
-![Dog Detail Page - Comments](./assets/readme_images/comment.png) 
+![Dog Detail Page - Comments](readme/images/comments.png) 
 
 * At the bottom of detailed page, users can read the comments posted by other users. If the user is logged in or is a superuser they have access to the buttons for deleting or updating comments. If the comment field is left blank and submit clicked the user is prompted to fill in the field. 
 
@@ -656,7 +656,7 @@ The user profile page is only visible to authenticated users. Here any saved inf
 
 ### Edit Comments Page
 
-![Edit Comments Page](./assets/readme_images/logged_in_comment.png)
+![Edit Comments Page](readme/images/logged_in_comment.png)
 
 * If a user is logged in they can click a link beside their own comments and they are allowed to add, edit or delete their own comments. The website superuser can delete or update any comments without having to access the admin panel.
 
@@ -664,7 +664,7 @@ The user profile page is only visible to authenticated users. Here any saved inf
 
 ### Search Results Page
 
-![Search Page](./assets/readme_images/search.png)
+![Search Page](readme/images/search.png)
 
 * A user can user the search bar tool to find relevant products. They are displayed below a message informing the user that if not results found please try another. If the user clicks the search button on an empty enquiry they will be informed that they forgot to search. This currently just searches products but a future feature could be to search all apps. 
 
@@ -672,8 +672,8 @@ The user profile page is only visible to authenticated users. Here any saved inf
 
 ### Footer
 
-![Footer](./assets/readme_images/footer.png)
-* The footer contains links to all social media for the page. 
+![Footer](readme/images/footer.png)
+* The footer contains links to our facebook page and to subscribe to our newsletter. 
 
 [Back to top](<#contents>)
 
@@ -819,7 +819,7 @@ The site had been test in Chrome seeming all according to the design. In Firefox
 | Feature       | Expected           | Action| Result|
 | ------------- |:-------------| :-----|-----:|
 | Sorting selections       | Sort by the selected filter| - |✅|
-| Products Cards | When clicked bring user to correct product detail | - |✅|
+| Products Cards | When clicked bring user to correct product detail | Click |✅|
 <br>
 
 ## **Product Details Page**
@@ -830,7 +830,7 @@ The site had been test in Chrome seeming all according to the design. In Firefox
 | ------------- |:-------------| :-----|-----:|
 | Keep Shopping  Button       | Directs to Product page  | Click |✅|
 | Add To Cart Button       | Add the product to the shopping cart  | Click |✅|
-| Quantity      | Changes quantity to add to bag  | - |✅|
+| Quantity      | Changes quantity to add to bag  | Click |✅|
 <br>
 
 
@@ -850,8 +850,8 @@ The site had been test in Chrome seeming all according to the design. In Firefox
 | ------------- |:-------------| :-----|-----:|
 | Dog Likes/comments | Display number of likes and comments on correct dog profile | - |✅|
 | Pagination    | Display according to the page the user is in, it would show prev or next plus
-||  a set of pages | Click |✅|
-| Dog Cards | When clicked bring user to correct dog profile | - |✅|
+||  a set of pages | - |✅|
+| Dog Cards | When clicked bring user to correct dog profile | Click |✅|
 <br>
 
 <br>
@@ -865,7 +865,7 @@ The site had been test in Chrome seeming all according to the design. In Firefox
 | Comment and like sections       | Can add comments and likes to dog profile  | Click |✅|
 | Edit own comments       | Can edit user comments  | Click |✅|
 | Cannot edit or delete others comments       | If try message pops up  | Click |✅|
-| Delete own comments       | Can delete user comments| Click |✅|
+| Delete own comments       | Can delete own comments| Click |✅|
 <br>
 
 **Unregistered Users**
@@ -934,14 +934,18 @@ The site had been test in Chrome seeming all according to the design. In Firefox
 | ------------- |:-------------| :-----|-----:|
 | Form to review, prefill  | Form filled with profile user's data, validate required fields | - |✅|
 
-## ** Backend/Admin Panel **
+## **Backend/Admin Panel**
 * All the models working to create, delete and update and perform as expected.  
 
 [Back to top](<#contents>)
 
 ## Bugs
 
-* Several bug were fixed throughout the testing process. Buttons were displaying with an overlap on small screen sizes which was due to an error with the bootstrap used. 
+* Several bug were fixed throughout the testing process. Buttons were displaying with an overlap on small screen sizes which was due to an error with the bootstrap used. There was an issue with the messages not popping up. This was discovered to be related to the mailchimp javascript and was resolved when this was moved to the footer template rather than the base template. 
+
+* Currently in the shopping bag the decrement button allows users to select minus amount of product. When updated this just removes the item from the bag so is not affecting checkout. This was not fixed due to timing issues. 
+
+* User's apart from superusers currently cannot leave a rating on a product. This could be ammended to add extra functionality. 
 
 [Back to top](<#contents>)
 
@@ -1034,6 +1038,8 @@ The site had been test in Chrome seeming all according to the design. In Firefox
 * Keywords advice from [Wordtracker](https://www.wordtracker.com/)
 
 * External reference advice from [Wordstream](https://www.wordstream.com/blog/ws/2013/07/24/follow-nofollow-links#:~:text=What%20is%20a%20No%20Follow,follow%20links%20get%20no%20love.)
+
+* Rating functionality advice from [Medium] (https://medium.com/geekculture/django-implementing-star-rating-e1deff03bb1c)
 
 [Back to top](<#contents>)
 

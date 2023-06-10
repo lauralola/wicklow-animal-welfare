@@ -1,16 +1,17 @@
 from django.shortcuts import render, redirect, reverse, get_object_or_404
+from django.http import HttpResponse, HttpRequest
 from django.contrib import messages
 from django.db.models import Q
 from django.db.models.functions import Lower
 from django.contrib.auth.decorators import login_required
 
-from .models import Product, Category
+from .models import Product, Category, Rating
 from .forms import ProductForm
 
 # Create your views here.
 
 
-def all_products(request):
+def all_products(request: HttpRequest) -> HttpResponse:
 
     """ A view to show all products, including sorting and search queries """
 
@@ -51,13 +52,27 @@ def all_products(request):
 
     current_sorting = f'{sort}_{direction}'
 
+    for product in products:
+        rating = Rating.objects.filter(product=product, user=request.user).first()
+        product.user_rating = rating.rating if rating else 0
+
     context = {
         'products': products,
         'search_term': query,
         'current_categories': categories,
+        'rating': rating,
     }
 
     return render(request, 'products.html', context)
+
+
+def rate(request: HttpRequest, product_id: int, rating: int) -> HttpResponse:
+    """ A view to allow rating of products """
+
+    product = Product.objects.get(id=product_id)
+    Rating.objects.filter(product=product, user=request.user).delete()
+    product.rating_set.create(user=request.user, rating=rating)
+    return index(request)
 
 
 def product_detail(request, product_id):
