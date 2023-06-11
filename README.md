@@ -93,6 +93,7 @@ This project was built as the final portfolio submission for the [Code Institute
 # **Business Model**
 <br>
 The project had been based in Business to Consumer (B2C) style. It is an e-commerce where the consumer can find options to donate specific items to the charity.
+
 <br>
 
 ## **Marketing Strategy**
@@ -120,11 +121,11 @@ Each page has its own title, and finally meta tag description had been included 
 The e-commerce has its own Facebook, the one that will keep posting a minimum of three times a week, and releasing alerts of monthly offers and benefits, which are sent by e-mail to the subscribers. This is for to motivate the subscription to our newsletter and increase the clients database.
 <br>
 
-![](/readme_docs/readme_imgs/facebook-1.png)
+![](/readme/images/facebook1.png)
 
 <br>
 
-![](/readme_docs/readme_imgs/facebook-2.png)
+![](/readme/images/facebook2.png)
 
 <br>
 
@@ -132,7 +133,7 @@ The e-commerce has its own Facebook, the one that will keep posting a minimum of
 Users can join our mailing list.
 <br>
 
-![](/readme_docs/readme_imgs/subscription_success.png)
+![](/readme/images/subcription_success.png)
 
 <br>
 
@@ -150,7 +151,7 @@ An agile methodology was used to plan and develop the Wicklow Animal Welfare pro
 
 All the user stories were added to a GitHub project board to assist with tracking progress. All user stories started in the to-do section. On completion, each user story was moved into the done section and marked as closed. 
 
-[Click here to view the Project Board](https:/)
+[Click here to view the Project Board](https://github.com/users/lauralola/projects/7/views/1)
 
 [Back to top](<#contents>)
 
@@ -242,6 +243,8 @@ As a **user** I can **view details of the products** so that **I can know more a
 &check; Add bag app and link to add to bag
 <br>
 &check; Test functionality
+<br>
+<hr>
 
 As a **user** I can **add, edit and remove items from my bag** so that **I can adjust my bag**
 
@@ -253,6 +256,8 @@ As a **user** I can **add, edit and remove items from my bag** so that **I can a
 &check; Add links to edit bag app
 <br>
 &check; Test functionality
+<br>
+<hr>
 
 As a **user** I can **checkout** so that **I can purchase items in my bag**
 
@@ -269,17 +274,24 @@ As a **user** I can **checkout** so that **I can purchase items in my bag**
 &check; Set up and connect webhooks through stripe
 <br>
 &check; Test functionality
+<br>
+<hr>
 
-As a **logged in user** I can **add, edit and delete my own comments and likes to the dog posts** so that **I can interact with the site**
+As a **user** I can **use a search bar to search the products list** so that **I can find a specific product quickly and easily**
 
 ### Acceptance Criteria:
-* Acceptance Criteria 1: When logged in I have access to comment and like a dog post
-* Acceptance Criteria 2: When logged in, my own posts have edit and delete links that work
+* Acceptance Criteria 1: A search bar with a text input field should be visible to users on all pages
+* Acceptance Criteria 2: When a user adds text to the search field the products list should be queried and products not matching the query should be filtered out and removed from view
 
 ### Tasks:
-&check; Add like and comment functionality to homing app
+&check; Add search bar component with query method
+<br>
+&check; Import and add search bar component into header
+<br>
+&check; Add search method query into products list 
 <br>
 &check; Test functionality
+<hr>
 
 ## **Unregistered User**
 <br>
@@ -293,6 +305,8 @@ As an **unregistered user** I can **clearly identify purpose of the page** so th
 &check; Add home app and links
 <br>
 &check; Test functionality
+<br>
+<hr>
 
 As an **unregistered user** I can **register for an account** so that **I can interact further with the site**
 
@@ -314,12 +328,13 @@ As an **unregistered user** I can **register for an account** so that **I can in
 <br>
 &check; Test functionality
 <br>
-<br>
+<hr>
 
 ## **Registered User**
 <br>
 
-As Registered User I want to be able to sign in and out of my account
+As an **registered user** I can **sign in and out of my account** so that **I can interact further with the site**
+
 ## Acceptance Criteria:
 * Acceptance Criteria 1: A log in and log out page link should be visible on the nav bar depending on status
 * Acceptance Criteria 2: Clicking the link should direct the user to the log in or logout form page depending on status
@@ -340,20 +355,20 @@ As Registered User I want to be able to sign in and out of my account
 <br>
 <hr>
 
-## **Staff User**
+As a **registered user** I can **add, edit and delete my own comments and likes to the dog posts** so that **I can interact with the site**
+
+### Acceptance Criteria:
+* Acceptance Criteria 1: When logged in I have access to comment and like a dog post
+* Acceptance Criteria 2: When logged in, my own posts have edit and delete links that work
+
+### Tasks:
+&check; Add like and comment functionality to homing app
 <br>
-As Staff/Admin User I want to access to a staff panel where I can manage the store's database from
-   - Staff Panel page
+&check; Test functionality
+<br>
+<hr>
 
-As Staff/Admin User I want to be able to manage the DB from the front-end
-   - Staff Panel page:
-      - Add, update or delete Product Form
-      - Add, update or delete a dog profile
-
-[Back to top](<#contents>)
-
-
-7. As a **logged in user** I can **edit my profile and see past orders** so that **I can change and update my profile and see past orders**
+As a **registered user** I can **edit my profile and see past orders** so that **I can change and update my profile and see past orders**
 
 ### Acceptance Criteria:
 * Acceptance Criteria 1: A dropdown menu with a my profile link should be visible to the user
@@ -377,81 +392,10 @@ As Staff/Admin User I want to be able to manage the DB from the front-end
 &check; Add error handling and validation
 <br>
 &check; Test functionality
+<br>
 <hr>
 
-10. As an **admin user** I can **add, edit and delete products** so that **I can keep the site up to date**
-
-### Acceptance Criteria:
-* Acceptance Criteria 1: An edit or delete icon button should be visible to a admin user in the product detail page and from the product management in my account drop down 
-* Acceptance Criteria 2: This should only be visible if the user is admin 
-* Acceptance Criteria 3: Clicking the edit or delete button should edit or delete the product and redirect the user back to the home page
-
-### Tasks:
-&check; Add edit and delete button link to the product detail page and product management drop down to my account area
-<br>
-&check; Add handle add, edit, delete methods
-<br>
-&check; Add user redirect to home page on successful task
-<br>
-&check; Add conditional to dropdown menu 
-<br>
-&check; Test functionality
-<hr>
-
-10. As an **admin user** I can **add, edit and delete dogs** so that **I can keep the site up to date**
-
-### Acceptance Criteria:
-* Acceptance Criteria 1: An edit or delete icon button should be visible to a admin user in the dog detail page and from the dog management in my account drop down 
-* Acceptance Criteria 2: This should only be visible if the user is admin 
-* Acceptance Criteria 3: Clicking the edit or delete button should edit or delete the product and redirect the user back to the home page
-
-### Tasks:
-&check; Add edit and delete button link to the dog detail page and dog management drop down to my account area
-<br>
-&check; Add handle add, edit, delete methods
-<br>
-&check; Add user redirect to home page on successful task
-<br>
-&check; Add conditional to dropdown menu 
-<br>
-&check; Test functionality
-<hr>
-
-10. As an **admin user** I can **delete users comments** so that **I can keep the site up to date**
-
-### Acceptance Criteria:
-* Acceptance Criteria 1: A delete icon button should be visible to a admin user in the comments section
-* Acceptance Criteria 2: This should only be visible if the user is admin 
-* Acceptance Criteria 3: Clicking delete button should delete the comment
-
-### Tasks:
-&check; Add delete button link to the comment section for admin user
-<br>
-&check; Add handle delete method
-<br>
-&check; Add user redirect on successful task
-<br>
-&check; Test functionality
-<hr>
-
-11. As a **user** I can **use a search bar to search the products list** so that **I can find a specific product quickly and easily**
-
-### Acceptance Criteria:
-* Acceptance Criteria 1: A search bar with a text input field should be visible to users on all pages
-* Acceptance Criteria 2: When a user adds text to the search field the products list should be queried and products not matching the query should be filtered out and removed from view
-
-### Tasks:
-&check; Add search bar component with query method
-<br>
-&check; Import and add search bar component into header
-<br>
-&check; Add search method query into products list 
-<br>
-&check; Test functionality
-<hr>
-
-
-3. As a **user** I can **delete my account** so that **I can remove my profile and all its content from the platform instantly**
+As a **registered user** I can **delete my account** so that **I can remove my profile and all its content from the platform instantly**
 
 ### Acceptance Criteria:
 * Acceptance Criteria 1: A delete button should be visible within a user’s profile dropdown menu
@@ -470,6 +414,77 @@ x Add redirect to method on successful completion
 x Test functionality
 <hr>
 
+## **Staff User**
+<br>
+
+As **admin User** I want to **access to a staff panel** where I can **manage the store's database from**
+   - Staff Panel page
+
+As **Staff/Admin User** I want to be **able to manage the DB from the front-end**
+   - Staff Panel page:
+      - Add, update or delete Product Form
+      - Add, update or delete a dog profile
+
+<br>
+<hr>
+
+As an **admin user** I can **add, edit and delete products** so that **I can keep the site up to date**
+
+### Acceptance Criteria:
+* Acceptance Criteria 1: An edit or delete icon button should be visible to a admin user in the product detail page and from the product management in my account drop down 
+* Acceptance Criteria 2: This should only be visible if the user is admin 
+* Acceptance Criteria 3: Clicking the edit or delete button should edit or delete the product and redirect the user back to the home page
+
+### Tasks:
+&check; Add edit and delete button link to the product detail page and product management drop down to my account area
+<br>
+&check; Add handle add, edit, delete methods
+<br>
+&check; Add user redirect to home page on successful task
+<br>
+&check; Add conditional to dropdown menu 
+<br>
+&check; Test functionality
+<hr>
+
+As an **admin user** I can **add, edit and delete dogs** so that **I can keep the site up to date**
+
+### Acceptance Criteria:
+* Acceptance Criteria 1: An edit or delete icon button should be visible to a admin user in the dog detail page and from the dog management in my account drop down 
+* Acceptance Criteria 2: This should only be visible if the user is admin 
+* Acceptance Criteria 3: Clicking the edit or delete button should edit or delete the product and redirect the user back to the home page
+
+### Tasks:
+&check; Add edit and delete button link to the dog detail page and dog management drop down to my account area
+<br>
+&check; Add handle add, edit, delete methods
+<br>
+&check; Add user redirect to home page on successful task
+<br>
+&check; Add conditional to dropdown menu 
+<br>
+&check; Test functionality
+<hr>
+
+As an **admin user** I can **delete users comments** so that **I can keep the site up to date**
+
+### Acceptance Criteria:
+* Acceptance Criteria 1: A delete icon button should be visible to a admin user in the comments section
+* Acceptance Criteria 2: This should only be visible if the user is admin 
+* Acceptance Criteria 3: Clicking delete button should delete the comment
+
+### Tasks:
+&check; Add delete button link to the comment section for admin user
+<br>
+&check; Add handle delete method
+<br>
+&check; Add user redirect on successful task
+<br>
+&check; Test functionality
+<hr>
+
+[Back to top](<#contents>)
+
 ## Site Structure
 
 The site structure for Wicklow Animal Welfare was kept simple and user-friendly to avoid confusion. The main site nav bar and is present on every page of the site to allow for easy access to site navigation. Non-authenticated users have limited access to pages within the site, and this is reflected in the changing state of the nav menus. Non logged in users only have access to certain areas and log-in / sign-up auth pages are clearly labelled. Authenticated users can access commenting, liking and their profile page with admin users able to change the database on the front end. 
@@ -478,7 +493,7 @@ The site structure for Wicklow Animal Welfare was kept simple and user-friendly 
 
 ## Colour Scheme
 
-The colour scheme was kept simple with black and white mostly used and pops of colour from the images through the site. 
+The colour scheme was kept simple with gray and pale green mostly used and pops of colour from the images through the site. 
 
 [Back to top](<#contents>)
 
@@ -693,7 +708,7 @@ The 404 page is triggered when a user navigates to a site URL which doesn't exis
 
 3. An events section could be added so users can fundraising events.
 
-4. Rating section could be implemented.
+4. Rating section could be further implemented to use the average rating correctly.
 
 [Back to top](<#contents>)
 
@@ -874,7 +889,7 @@ The site had been test in Chrome seeming all according to the design. In Firefox
 **Unregistered Users**
 <br>
 | Feature       | Expected           | Action| Result|
-
+| ------------- |:-------------| :-----|-----:|
 | Prompted to create account to add comment and like sections       | Brings to sign up page  | Click |✅|
 
 
@@ -937,18 +952,22 @@ The site had been test in Chrome seeming all according to the design. In Firefox
 | ------------- |:-------------| :-----|-----:|
 | Form to review, prefill  | Form filled with profile user's data, validate required fields | - |✅|
 
-## **Backend/Admin Panel**
+**Backend/Admin Panel**
+<br>
 * All the models working to create, delete and update and perform as expected.  
 
 [Back to top](<#contents>)
+<hr>
 
 ## Bugs
 
 * Several bug were fixed throughout the testing process. Buttons were displaying with an overlap on small screen sizes which was due to an error with the bootstrap used. There was an issue with the messages not popping up. This was discovered to be related to the mailchimp javascript and was resolved when this was moved to the footer template rather than the base template. 
 
-* Currently in the shopping bag the decrement button allows users to select minus amount of product. When updated this just removes the item from the bag so is not affecting checkout. This was not fixed due to timing issues. 
+* The shopping bag was allowing the decrement buttons to select minus amount of product. When updated this just removes the item from the bag so is not affecting checkout. This was fixed.
 
-* User's apart from superusers currently cannot leave a rating on a product. This could be ammended to add extra functionality. 
+* Issues with adding rating functionality need further work. Logged in users can leave a rating, however this is not saved and does not change average rating. As this was not key to website and due to timing issues this was not rectified.
+
+* Issue with webhooks was found to be due to an error in the WH secret key. 
 
 [Back to top](<#contents>)
 
