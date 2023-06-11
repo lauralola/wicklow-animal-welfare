@@ -83,19 +83,20 @@
                                             <span class="fa fa-star {% if product.average_rating > 4 %} checked {% endif %}"></span>
                                         </h5>
                                         {% if user.is_authenticated %}
-                                        <ul class="stars btn btn-light list-inline rating-list">
-                                            <li onclick="rate(5, {{ product.id }})">
-                                                <i class="fa fa-star {% if product.user_rating > 4 %} checked {% endif %}" title="Rate 5"></i></li>
-                                            <li onclick="rate(4, {{ product.id }})">
-                                                <i class="fa fa-star {% if product.user_rating > 3 %} checked {% endif %}" title="Rate 4"></i></li>
-                                            <li onclick="rate(3, {{ product.id  }})">
-                                                <i class="fa fa-star {% if product.user_rating > 2 %} checked {% endif %}" title="Rate 3"></i></li>
-                                            <li onclick="rate(2, {{ product.id }})">
-                                                <i class="fa fa-star {% if product.user_rating > 1 %} checked {% endif %}" title="Rate 2"></i></li>
+                                        <ul class="stars btn btn-light list-inline rating-list" data-id="{{ product.id }}" data-rating="{{ product.user_rating }}">
                                             <li onclick="rate(1, {{ product.id }})">
-                                                <i class="fa fa-star {% if product.user_rating > 0 %} checked {% endif %}" title="Rate 1"></i></li>
+                                                <i class="fa fa-star {% if product.user_rating > 0 %} checked {% endif %}" title="Rate 1" data-rating="1"></i></li>
+                                            <li onclick="rate(2, {{ product.id }})">
+                                                <i class="fa fa-star {% if product.user_rating > 1 %} checked {% endif %}" title="Rate 2" data-rating="2"></i></li>
+                                            <li onclick="rate(3, {{ product.id  }})">
+                                                <i class="fa fa-star {% if product.user_rating > 2 %} checked {% endif %}" title="Rate 3" data-rating="3"></i></li>
+                                            <li onclick="rate(4, {{ product.id }})">
+                                                <i class="fa fa-star {% if product.user_rating > 3 %} checked {% endif %}" title="Rate 4" data-rating="4"></i></li>
+                                            <li onclick="rate(5, {{ product.id }})">
+                                                <i class="fa fa-star {% if product.user_rating > 4 %} checked {% endif %}" title="Rate 5" data-rating="5"></i></li>
                                         </ul>
                                         {% else %}
+                                        <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#like-login"><i class="far fa-star">Login to rate</i></button>
                                         <!-- Login bootstrap modal-->
                                         <div class="modal" id="like-login" tabindex="-1" role="dialog">
                                             <div class="modal-dialog" role="document">
@@ -161,53 +162,83 @@
 {% endblock %}
 
 {% block postloadjs %}
-    {{ block.super }}
-    <script type="text/javascript">
-        const rate = (rating, product_id) => {
-            fetch(`/rate/${product_id}/${rating}/`, {
-                method: 'GET',
-                headers: {
-                    'Content-Type': 'application/json'
-                }
-            }).then(rest => {
-            const stars = document.querySelectorAll('.stars i');
+<script>
+   // select all stars on the page
+   const stars = document.querySelectorAll('.stars i');
 
-                stars.forEach((star, index1)) => {
-                    star.addEventListener('click', () => {
-                        stars.forEach((star, index2) => {
-                            index1 >= index2 ? star.classList.add('checked'): star.classList.remove('checked');
-                        })
-                    })
-                }
-            })
-        }
+// loop over all stars and add a click event listener to each
+stars.forEach(star => star.addEventListener('click', event => {
+    // find the parent container
+    const parent = event.target.parentNode.parentNode;
+    // only select the stars that are inside the parent
+    const productStars = parent.querySelectorAll('.stars i');
+    // get the rating of the clicked star
+    const rating = event.target.dataset.rating;
+
+    // set the parent rating
+    parent.dataset.rating = rating;
+
+    // loop over the 5 stars
+    for (let i = 0; i < 5; i++) {
+        // if i is less than than the rating add css otherwise remove
+        i < parseInt(rating) ? productStars[i].classList.add('checked'): productStars[i].classList.remove('checked');
+    }
+}));
+
+stars.forEach(star => star.addEventListener('mouseover', event => {
+    // find the parent container
+    const parent = event.target.parentNode.parentNode;
+    // only select the stars that are inside the parent
+    const productStars = parent.querySelectorAll('.stars i');
+    // get the rating of the clicked star
+    const rating = event.target.dataset.rating;
+
+    // loop over the 5 stars
+    for (let i = 0; i < 5; i++) {
+        // if i is less than than the rating add the css style otherwise remove it
+        i < parseInt(rating) ? productStars[i].style.color = 'orange': productStars[i].style.color = 'unset';
+    }
+}));
+
+stars.forEach(star => star.addEventListener('mouseout', event => {
+    // find the parent container
+    const parent = event.target.parentNode.parentNode;
+    // only select the stars that are inside the parent
+    const productStars = parent.querySelectorAll('.stars i');
+    // get the rating of the clicked star
+    const rating = parent.dataset.rating;
+
+    // loop over the 5 stars
+    for (let i = 0; i < 5; i++) {
+        // if i is less than than the rating add the css style  otherwise remove it
+        i < parseInt(rating) ? productStars[i].style.color = 'orange': productStars[i].style.color = 'unset';
+    }
+}));
+
+$('.btt-link').click(function(e) {
+    window.scrollTo(0,0);
+});
 
 
-		$('.btt-link').click(function(e) {
-			window.scrollTo(0,0)
-		})
+$('#sort-selector').change(function() {
+    var selector = $(this);
+    var currentUrl = new URL(window.location);
 
-    
-        $('#sort-selector').change(function() {
-            var selector = $(this);
-            var currentUrl = new URL(window.location);
+    var selectedVal = selector.val();
+    if(selectedVal != "reset"){
+        var sort = selectedVal.split("_")[0];
+        var direction = selectedVal.split("_")[1];
 
-            var selectedVal = selector.val();
-            if(selectedVal != "reset"){
-                var sort = selectedVal.split("_")[0];
-                var direction = selectedVal.split("_")[1];
+        currentUrl.searchParams.set("sort", sort);
+        currentUrl.searchParams.set("direction", direction);
 
-                currentUrl.searchParams.set("sort", sort);
-                currentUrl.searchParams.set("direction", direction);
+        window.location.replace(currentUrl);
+    } else {
+        currentUrl.searchParams.delete("sort");
+        currentUrl.searchParams.delete("direction");
 
-                window.location.replace(currentUrl);
-            } else {
-                currentUrl.searchParams.delete("sort");
-                currentUrl.searchParams.delete("direction");
-
-                window.location.replace(currentUrl);
-            }
-        })
-
-    </script>
+        window.location.replace(currentUrl);
+    }
+});
+</script>
 {% endblock %}

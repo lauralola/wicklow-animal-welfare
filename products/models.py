@@ -29,7 +29,8 @@ class Product(models.Model):
     featured_image = CloudinaryField('image', default='placeholder')
 
     def average_rating(self) -> float:
-        return Rating.objects.filter(product=self).aggregate(Avg("rating"))["rating__avg"] or 0
+        return (Rating.objects.filter
+                (product=self).aggregate(Avg("rating"))["rating__avg"] or 0)
 
     def __str__(self):
         return f"{self.name}: {self.average_rating()}"

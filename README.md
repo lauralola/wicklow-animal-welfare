@@ -540,7 +540,7 @@ The nav bar handles the main site menu. It is available on all pages and contain
 
 ![Products Page](readme/images/products-page.png)
 
-The products page is available to view for both authenticated and non-authenticated users. The page features a list of all the products currently on the site with their prices and image. The list  can be ordered by price, category and rating. Clicking on the image of a product will open the detail on that product. 
+The products page is available to view for both authenticated and non-authenticated users. The page features a list of all the products currently on the site with their prices and image. The list  can be ordered by price, category and rating. Clicking on the image of a product will open the detail on that product. Logged in users can also leave a star rating here. 
 
 [Back to top](<#contents>)
 
@@ -624,7 +624,7 @@ The edit dog form is only accessible to admin users who are authenticated. Click
 
 ### Delete Dog
 
-![Delete Dog](readme/images/delete-dog.png)
+![Delete Dog](readme/images/delete_dog.png)
 
 The delete dog is available to authenticated admin users. There is no page for deletion. The user simply clicks the delete icon and it is removed. A success message is given to let the user know it has been deleted. 
 
@@ -705,13 +705,13 @@ The 404 page is triggered when a user navigates to a site URL which doesn't exis
 
 All the pages of the site have been passed through the [W3C HTML Markup Validation Service](https://validator.w3.org/), with minor errors rectified. No errors or warnings are now showing.
 
-![HTML Validator Feed Page](readme/images/html-validator-page.png)
+![HTML Validator Feed Page](readme/images/html.png)
 
 [Back to top](<#contents>)
 
 ### W3C CSS
 
-![CSS Validator](readme/images/css-validator.png)
+![CSS Validator](readme/images/css.png)
 
 This file was passed through the [Jigsaw W3C CSS Validation Service](https://validator.w3.org/).
 
@@ -721,11 +721,13 @@ This file was passed through the [Jigsaw W3C CSS Validation Service](https://val
 
 All JavaScript files in the project have been run through the [JavaScript ESLinter](https://eslint.org/). 
 
-2. Do not pass children as props - this is based off of code provided by Code Institute
-
-All other errors were corrected.
+![Javascript Validator](readme/images/javascript.png)
 
 [Back to top](<#contents>)
+
+### Flake8
+
+Flake8 errors recticied, apart from one or too lines to long that caused the code not to run correctly when rectified. 
 
 ### Manual Tests
 
@@ -820,6 +822,7 @@ The site had been test in Chrome seeming all according to the design. In Firefox
 | ------------- |:-------------| :-----|-----:|
 | Sorting selections       | Sort by the selected filter| - |✅|
 | Products Cards | When clicked bring user to correct product detail | Click |✅|
+| Star Rating | When clicked saves users rating | Click |Not functioning correctly as does not save on reload or update average|
 <br>
 
 ## **Product Details Page**
@@ -1039,7 +1042,8 @@ The site had been test in Chrome seeming all according to the design. In Firefox
 
 * External reference advice from [Wordstream](https://www.wordstream.com/blog/ws/2013/07/24/follow-nofollow-links#:~:text=What%20is%20a%20No%20Follow,follow%20links%20get%20no%20love.)
 
-* Rating functionality advice from [Medium] (https://medium.com/geekculture/django-implementing-star-rating-e1deff03bb1c)
+* Rating functionality advice from [Medium] (https://medium.com/geekculture/django-implementing-star-rating-e1deff03bb1c) and 
+[CodingLab] https://www.youtube.com/watch?v=q1xhbc-oKnc&ab_channel=CodingLab
 
 [Back to top](<#contents>)
 

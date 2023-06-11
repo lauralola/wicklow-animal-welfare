@@ -20,6 +20,7 @@ def all_products(request: HttpRequest) -> HttpResponse:
     categories = None
     sort = None
     direction = None
+    rating = None
 
     if request.GET:
         if 'sort' in request.GET:
@@ -53,7 +54,7 @@ def all_products(request: HttpRequest) -> HttpResponse:
     current_sorting = f'{sort}_{direction}'
 
     for product in products:
-        rating = Rating.objects.filter(product=product, user=request.user).first()
+        rating = Rating.objects.filter(product=product).first()
         product.user_rating = rating.rating if rating else 0
 
     context = {
@@ -72,7 +73,7 @@ def rate(request: HttpRequest, product_id: int, rating: int) -> HttpResponse:
     product = Product.objects.get(id=product_id)
     Rating.objects.filter(product=product, user=request.user).delete()
     product.rating_set.create(user=request.user, rating=rating)
-    return index(request)
+    return 'index'(request)
 
 
 def product_detail(request, product_id):
