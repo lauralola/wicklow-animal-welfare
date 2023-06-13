@@ -1,6 +1,6 @@
 # **Wicklow Animal Welfare**
 
-![](/readme_docs/readme_imgs/am-i-responsive.png)
+![](/readme/images/am-i-responsive.png)
 
 <br>
 
