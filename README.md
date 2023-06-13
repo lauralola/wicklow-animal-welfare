@@ -623,7 +623,7 @@ The adoption page is available to view for both authenticated and non-authentica
 [Back to top](<#contents>)
 
 ### Dog Detail Page
-![Dog Detail Page](readme/images/dog-detail-page.png)
+![Dog Detail Page](readme/images/dog-detail.png)
 
 The dog detail page is available to view for both authenticated and non-authenticated users. Clicking on the image of a dog in the main page will open the detail on that dog. The page features more information on the dog with comments and likes visible. Only logged in users have access to comment or like. Users must be logged in to comment or like and are alerted to this if not. Once logged in users can like and unlike, comment and edit or delete their own comments. 
 
@@ -671,7 +671,7 @@ The user profile page is only visible to authenticated users. Here any saved inf
 
 ### Edit Comments Page
 
-![Edit Comments Page](readme/images/logged_in_comment.png)
+![Edit Comments Page](readme/images/logged-in-comments.png)
 
 * If a user is logged in they can click a link beside their own comments and they are allowed to add, edit or delete their own comments. The website superuser can delete or update any comments without having to access the admin panel.
 
@@ -694,7 +694,7 @@ The user profile page is only visible to authenticated users. Here any saved inf
 
 ### 404 Page
 
-![404 Page](readme/images/404-page.png)
+![404 Page](readme/images/404.png)
 
 The 404 page is triggered when a user navigates to a site URL which doesn't exist. This could be because of a number of reasons, including a faulty link or an expired URL. Most users will not see this page, but it is there as a backup for users who encounter these rare errors. The purpose of the 404 page is to notify the user that there has been an error, and the page that they have tried to access cannot be found.
 
