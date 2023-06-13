@@ -30,7 +30,7 @@ class Product(models.Model):
 
     def average_rating(self) -> float:
         return (Rating.objects.filter
-                (product=self).aggregate(Avg("rating"))["rating__avg"] or 0)
+                (product=self).aggregate(Avg("rating"))["rating__avg"] or 5)
 
     def __str__(self):
         return f"{self.name}: {self.average_rating()}"

@@ -154,8 +154,8 @@ a {
 }
 
 .btn {
-    background-color: #c7ddc7 !important;
-    color: #222427 !important;
+    background-color: #222427 !important;
+    color: #c7ddc7 !important; 
     border: #000;
 }
 

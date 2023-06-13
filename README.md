@@ -397,23 +397,6 @@ As a **registered user** I can **edit my profile and see past orders** so that *
 
 As a **registered user** I can **delete my account** so that **I can remove my profile and all its content from the platform instantly**
 
-### Acceptance Criteria:
-* Acceptance Criteria 1: A delete button should be visible within a user’s profile dropdown menu
-* Acceptance Criteria 2: Clicking the delete button should display a pop up window prompting the user to confirm their request to delete their profile
-* Acceptance Criteria 3: If a user clicks the delete button on the pop up their profile should be deleted along with all their content and they should be logged out and redirected back to the home page
-
-### Tasks:
-x Add delete button icon to profile page dropdown menu
-<br>
-x Add delete user/profile method
-<br>
-x Add pop up delete confirmation to confirm user deletion
-<br>
-x Add redirect to method on successful completion
-<br>
-x Test functionality
-<hr>
-
 ## **Staff User**
 <br>
 
@@ -625,7 +608,7 @@ The adoption page is available to view for both authenticated and non-authentica
 ### Dog Detail Page
 ![Dog Detail Page](readme/images/dog-detail.png)
 
-The dog detail page is available to view for both authenticated and non-authenticated users. Clicking on the image of a dog in the main page will open the detail on that dog. The page features more information on the dog with comments and likes visible. Only logged in users have access to comment or like. Users must be logged in to comment or like and are alerted to this if not. Once logged in users can like and unlike, comment and edit or delete their own comments. 
+The dog detail page is available to view for both authenticated and non-authenticated users. Clicking on the image of a dog in the main page will open the detail on that dog. The page features more information on the dog with comments and likes visible. Only logged in users have access to comment or like. Users must be logged in to comment or like and are alerted to this if not. Once logged in users can like and unlike and comment. Functionality was added for users to be able to edit or delete their own comments, however this is not functioning correctly and requires further work. 
 
 [Back to top](<#contents>)
 
@@ -673,7 +656,7 @@ The user profile page is only visible to authenticated users. Here any saved inf
 
 ![Edit Comments Page](readme/images/logged-in-comments.png)
 
-* If a user is logged in they can click a link beside their own comments and they are allowed to add, edit or delete their own comments. The website superuser can delete or update any comments without having to access the admin panel.
+* If a superuser is logged in they can click a link beside comments and they are allowed to add, edit or delete comments. The website superuser can delete or update any comments without having to access the admin panel. Functionality was added for users to be able to edit or delete their own comments, however this is not functioning correctly and requires further work. 
 
 [Back to top](<#contents>)
 
@@ -702,13 +685,15 @@ The 404 page is triggered when a user navigates to a site URL which doesn't exis
 
 ## Future Features
 
-1. Further functionality to search the site. 
+1. Further functionality to search the entire site. 
 
 2. A user could have the functionality to completely delete their account along with any related content. 
 
 3. An events section could be added so users can fundraising events.
 
 4. Rating section could be further implemented to use the average rating correctly.
+
+5. Functionality was added for users to be able to edit or delete their own comments, however this is not functioning correctly and requires further work. 
 
 [Back to top](<#contents>)
 
@@ -881,9 +866,9 @@ The site had been test in Chrome seeming all according to the design. In Firefox
 | Feature       | Expected           | Action| Result|
 | ------------- |:-------------| :-----|-----:|
 | Comment and like sections       | Can add comments and likes to dog profile  | Click |✅|
-| Edit own comments       | Can edit user comments  | Click |✅|
+| Edit own comments       | Can edit user comments  | Click |Not functionning correctly|
 | Cannot edit or delete others comments       | If try message pops up  | Click |✅|
-| Delete own comments       | Can delete own comments| Click |✅|
+| Delete own comments       | Can delete own comments| Click |Not functionning correctly|
 <br>
 
 **Unregistered Users**
@@ -968,6 +953,8 @@ The site had been test in Chrome seeming all according to the design. In Firefox
 * Issues with adding rating functionality need further work. Logged in users can leave a rating, however this is not saved and does not change average rating. As this was not key to website and due to timing issues this was not rectified.
 
 * Issue with webhooks was found to be due to an error in the WH secret key. 
+
+* Functionality was added for users to be able to edit or delete their own comments, however this is not functioning correctly and requires further work. 
 
 [Back to top](<#contents>)
 
