@@ -71,17 +71,10 @@
                                         {% if product.category %}
                                             <p class="small mt-1 mb-0">
                                                 <a class="text-muted" href="{% url 'products' %}?category={{ product.category.name }}">
-                                                    <i class="fas fa-tag mr-1"></i>{{ product.category.friendly_name }}
+                                                    <i class="fas fa-tag mr-1"></i>{{ product.category.public_name }}
                                                 </a>
                                             </p>
                                         {% endif %}
-                                        <h5 class="card-title">Avg rating:
-                                            <span class="fa fa-star {% if product.average_rating > 0 %} checked {% endif %}"></span>
-                                            <span class="fa fa-star {% if product.average_rating > 1 %} checked {% endif %}"></span>
-                                            <span class="fa fa-star {% if product.average_rating > 2 %} checked {% endif %}"></span>
-                                            <span class="fa fa-star {% if product.average_rating > 3 %} checked {% endif %}" ></span>
-                                            <span class="fa fa-star {% if product.average_rating > 4 %} checked {% endif %}"></span>
-                                        </h5>
                                         {% if user.is_authenticated %}
                                         <ul class="stars btn btn-light list-inline rating-list" data-id="{{ product.id }}" data-rating="{{ product.user_rating }}">
                                             <li onclick="rate(1, {{ product.id }})">

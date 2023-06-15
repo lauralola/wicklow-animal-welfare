@@ -100,25 +100,22 @@ The project had been based in Business to Consumer (B2C) style. It is an e-comme
 <br>
 
 ### **SEO**
-Several SEO techniques were undertaken in order to ensure the site ranks highly in search engine results. Also the files robots.txt and sitemap.xml had been included. The sitemap.xml file had been created using 
-
-[xml-sitemap](https://www.xml-sitemaps.com/)
+Several SEO techniques were undertaken in order to ensure the site ranks highly in search engine results. A robots.txt and sitemap.xml are included. The sitemap.xml file was created using [xml-sitemap](https://www.xml-sitemaps.com/)
 
 **Keywords:**
 <br>
-Starting with a brain storm of keywords that are relevant to the e-commerce itself. And reduced by making use of a word search so as to target the more relevant, the site I had used is 
+A brain storm of keywords relevant to the e-commerce site was performed and reduced using a word search on
 
-[wordtracker](https://www.wordtracker.com/)
+[Wordtracker](https://www.wordtracker.com/)
 
 **Content marketing:**
 <br>
-The information and description of the products in the site had been kept the more relevant to the site purpose. Also the keywords had been taken into account when creating things like categories and such, so insure they are present without getting to be considered as spam. 
-Each page has its own title, and finally meta tag description had been included in the base so that every page contains them.
+The content and description of the products is kept simple and relevant to the purpose of the site. Keywords were also taken into account when producing content for the site to insure they are present without being considered as spam. Meta tag description's are included in the base template so that these are present on every page.
 
 
 **Social Media Marketing: Facebook**
 <br>
-The e-commerce has its own Facebook, the one that will keep posting a minimum of three times a week, and releasing alerts of monthly offers and benefits, which are sent by e-mail to the subscribers. This is for to motivate the subscription to our newsletter and increase the clients database.
+A Facebook business page was created for the ecommerce store, and should be kept updated by posting a minimum of three times a week. User's can also join our newsletter which will be sent by e-mail to the subscribers. This would increase our client database.
 <br>
 
 ![](/readme/images/facebook1.png)
@@ -143,7 +140,7 @@ Users can join our mailing list.
 
 ## Project Management
 
-An agile methodology was used to plan and develop the Wicklow Animal Welfare project. All the main features of the application were recorded and refined into user stories. These user stories were created and stored as GitHub issues and then mapped into iterations to help to plan and allocate the workload. 
+An agile methodology was used to plan and develop the Wicklow Animal Welfare project. All the main features of the application were recorded and refined into user stories. These user stories were created and stored as GitHub issues to help to plan and allocate the workload. 
 
 [Back to top](<#contents>)
 
@@ -538,7 +535,7 @@ The nav bar handles the main site menu. It is available on all pages and contain
 
 ![Products Page](readme/images/products-page.png)
 
-The products page is available to view for both authenticated and non-authenticated users. The page features a list of all the products currently on the site with their prices and image. The list  can be ordered by price, category and rating. Clicking on the image of a product will open the detail on that product. Logged in users can also leave a star rating here. 
+The products page is available to view for both authenticated and non-authenticated users. The page features a list of all the products currently on the site with their prices and image. The list  can be ordered by price, category and rating. Clicking on the image of a product will open the detail on that product. Logged in users can also leave a star rating here. This functionality requires further work to link the rating to the database and create an average product rating for future clients. 
 
 [Back to top](<#contents>)
 
@@ -656,7 +653,7 @@ The user profile page is only visible to authenticated users. Here any saved inf
 
 ![Edit Comments Page](readme/images/logged-in-comments.png)
 
-* If a superuser is logged in they can click a link beside comments and they are allowed to add, edit or delete comments. The website superuser can delete or update any comments without having to access the admin panel. Functionality was added for users to be able to edit or delete their own comments, however this is not functioning correctly and requires further work. 
+* If a superuser is logged in they can click a link beside comments and they are allowed to add, edit or delete comments. The website superuser can delete or update any comments without having to access the admin panel. Functionality was added for users to be able to edit or delete their own comments. 
 
 [Back to top](<#contents>)
 
