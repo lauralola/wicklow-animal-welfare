@@ -17,78 +17,65 @@ This project was built as the final portfolio submission for the [Code Institute
 
 # **Contents**
 * [**Business Model**](<#bussines-model>)
-    *[**Marketing Strategy**](<#marketing-strategy>)
-         *[SEO](<#seo>)
+    * [**Marketing Strategy**](<#marketing-strategy>)
+         * [SEO](<#seo>)
 * [**Project**](<#project>)
     * [**Project Management**](<#project-management>)
         * [GitHub Project Board](<#github-project-board>)
         * [Database Schema](<#database-schema>)
 * [**User Experience UX**](<#user-experience-ux>)
     * [**User Stories**](<#user-stories>)
-        - [User](#users)
-        - [User Unregister](#unregistered-user)
-        - [User Register](#registered-user)
-        - [User Staff](#staff-user)
+        * [User](#users)
+        * [Unregistered User](#unregistered-user)
+        * [Registered User](#registered-user)
+        * [Staff User](#staff-user)
     * [Site Structure](<#site-structure>)
     * [Colour Scheme](<#colour-scheme>)
     * [Typography](<#typography>)
-    * [Flowcharts](#flowcharts)
-        - [Flowchart Unregister User](#user-unregister-👇)
-        - [Flowchart Registered User](#user-registered-👇)
-        - [Flowchart Staff User](#user-staff-👇)
-        - [Flowchart Others](#other-👇)
 * [**Features**](<#features>)
-        * [Sign-Up Page](<#sign-up-page>)
-        * [Sign-In Page](<#sign-in-page>)
-        * [Sign Out](<#sign-out>)
-        * [Home Page](<#home-page>)
-        * [Nav Bar](<#nav-bar>)
-        * [Products Page](<#products-page>)
-        * [Product Detail Page](<#fproduct-detail-page>)
-        * [Edit Product Form](<#edit-product-form>)
-        * [Delete Product](<#delete-product>)
-        * [Product Management Form](<#product-management-form>)
-        * [Shopping Bag Page](<#shopping-bag-page>) 
-        * [Checkout Page](<#checkout-page>) 
-        * [Checkout Success Page](<#checkout-success-page>) 
-        * [Adoption Page](<#adoption-page>)
-        * [Dog Detail Page](<#dog-detail-page>)        
-        * [Edit Dog Form](<#edit-dog-form>)
-        * [Delete Dog](<#delete-dog>)
-        * [Dog Management Form](<#dog-management-form>)
-        * [Profile Page](<#profile-page>)
-        * [Dog Detail Page-Comments](<#dog-detail-page-comments>)  
-        * [Edit Comments Page](<#edit-comments-page>)
-        * [Search Results Page](<#search-results-page>)
-        * [Footer](<#footer>)
-    * [**Future Features**](<#future-features>)
+    * [Sign-Up Page](<#sign-up-page>)
+    * [Sign-In Page](<#sign-in-page>)
+    * [Sign Out](<#sign-out>)
+    * [Home Page](<#home-page>)
+    * [Nav Bar](<#nav-bar>)
+    * [Products Page](<#products-page>)
+    * [Product Detail Page](<#fproduct-detail-page>)
+    * [Edit Product Form](<#edit-product-form>)
+    * [Delete Product](<#delete-product>)
+    * [Product Management Form](<#product-management-form>)
+    * [Shopping Bag Page](<#shopping-bag-page>) 
+    * [Checkout Page](<#checkout-page>) 
+    * [Checkout Success Page](<#checkout-success-page>) 
+    * [Adoption Page](<#adoption-page>)
+    * [Dog Detail Page](<#dog-detail-page>)        
+    * [Edit Dog Form](<#edit-dog-form>)
+    * [Delete Dog](<#delete-dog>)
+    * [Dog Management Form](<#dog-management-form>)
+    * [Profile Page](<#profile-page>)
+    * [Dog Detail Page-Comments](<#dog-detail-page-comments>)  
+    * [Edit Comments Page](<#edit-comments-page>)
+    * [Search Results Page](<#search-results-page>)
+    * [Footer](<#footer>)
+    * [404 Page](<#404-page>)
+* [**Future Features**](<#future-features>)
 * [**Testing**](<#testing>)
     * [**Validator Tests**](<#validator-tests>)
         * [W3C (HTML)](<#w3c-html>)
         * [W3C (CSS)](<#w3c-css>)
         * [ESLint (JavaScript)](<#eslint-javascript>)
     * [**Additional Tests**](<#additional-tests>)
-        * [Manual Tests](<#manual-tests>)
-        * [Input Validation Tests](<#input-validation-tests>)
-        * [Automated Tests](<#automated-tests>)
-        * [Responsive Tests](<#responsive-tests>)
-        * [Browser Tests](<#browser-tests>)
+        * [Responsiveness](<#responsiveness>)
+        * [Manual Tests](<#manual-tests>)  
         * [Lighthouse Tests](<#lighthouse-tests>)
     * [**Bugs**](<#bugs>)
-        * [Resolved](<#resolved>)
-        * [Unresolved](<#unresolved>)
 * [**Technologies Used**](<#technologies-used>)
-    * [Languages](<#languages>)
-    * [Frameworks](<#frameworks>)
-    * [Software](<#software>)
-    * [Libraries](<#libraries>)
+    * [Languages Used](<#languages>)
+    * [Django Packages](<#django-packages>)
+    * [Frameworks](<#frameworks>)   
 * [**Deployment**](<#deployment>)
-    * [Project Deployment via Heroku](<#project-deployment-via-heroku>)
 * [**Credits**](<#credits>)
-    * [Content](<#content>)
     * [Media](<#media>)
     * [Code](<#code>)
-*  [**Acknowledgements**](<#acknowledgements>)
 
 # **Business Model**
 <br>
@@ -136,7 +123,7 @@ Users can join our mailing list.
 
 [Back to top](<#contents>)
 
-# Project
+# **Project**
 
 ## Project Management
 
@@ -158,16 +145,14 @@ All the user stories were added to a GitHub project board to assist with trackin
 
 [Back to top](<#contents>)
 
-# User Experience UX
+# **User Experience UX**
 
 As target users, we are aiming for individuals interested in animal welfare, adopting a dog or donating to the charity. The section with information on how to help also links to our products for sale. 
 
-# User Stories
+## User Stories
 
-## **Users**
+### **Users**
 
-<br>
-   
 As a **user** I can **view a navbar from every page** so that **navigate easily between pages**
 
 ### Acceptance Criteria:
@@ -290,8 +275,7 @@ As a **user** I can **use a search bar to search the products list** so that **I
 &check; Test functionality
 <hr>
 
-## **Unregistered User**
-<br>
+### **Unregistered User**
 
 As an **unregistered user** I can **clearly identify purpose of the page** so that **I can interact with the site**
 
@@ -327,17 +311,16 @@ As an **unregistered user** I can **register for an account** so that **I can in
 <br>
 <hr>
 
-## **Registered User**
-<br>
+### **Registered User**
 
 As an **registered user** I can **sign in and out of my account** so that **I can interact further with the site**
 
-## Acceptance Criteria:
+### Acceptance Criteria:
 * Acceptance Criteria 1: A log in and log out page link should be visible on the nav bar depending on status
 * Acceptance Criteria 2: Clicking the link should direct the user to the log in or logout form page depending on status
 * Acceptance Criteria 3: Filling in the form correctly should direct the user to the homepage and display their profile link in the navbar as well as the other pages only available to logged in users or redirect them to the homepage with a success message on log out
 
-## Tasks:
+### Tasks:
 &check; Add log in and log out page component
 <br>
 &check; Add conditional to only display to logged out users
@@ -394,8 +377,7 @@ As a **registered user** I can **edit my profile and see past orders** so that *
 
 As a **registered user** I can **delete my account** so that **I can remove my profile and all its content from the platform instantly**
 
-## **Staff User**
-<br>
+### **Staff User**
 
 As **admin User** I want to **access to a staff panel** where I can **manage the store's database from**
    - Staff Panel page
@@ -465,25 +447,25 @@ As an **admin user** I can **delete users comments** so that **I can keep the si
 
 [Back to top](<#contents>)
 
-## Site Structure
+## **Site Structure**
 
 The site structure for Wicklow Animal Welfare was kept simple and user-friendly to avoid confusion. The main site nav bar and is present on every page of the site to allow for easy access to site navigation. Non-authenticated users have limited access to pages within the site, and this is reflected in the changing state of the nav menus. Non logged in users only have access to certain areas and log-in / sign-up auth pages are clearly labelled. Authenticated users can access commenting, liking and their profile page with admin users able to change the database on the front end. 
 
 [Back to top](<#contents>)
 
-## Colour Scheme
+## **Colour Scheme**
 
 The colour scheme was kept simple with gray and pale green mostly used and pops of colour from the images through the site. 
 
 [Back to top](<#contents>)
 
-## Typography
+## **Typography**
 
 Wicklow Animal Welfare uses [Google Fonts](https://fonts.google.com/) for its typography. The font utilised is Montserrat.
 
 [Back to top](<#contents>)
 
-# Features
+# **Features**
 
 ### Sign-Up Page
 
@@ -680,7 +662,7 @@ The 404 page is triggered when a user navigates to a site URL which doesn't exis
 
 [Back to top](<#contents>)
 
-## Future Features
+## **Future Features**
 
 1. Further functionality to search the entire site. 
 
@@ -694,9 +676,9 @@ The 404 page is triggered when a user navigates to a site URL which doesn't exis
 
 [Back to top](<#contents>)
 
-# Testing
+# **Testing**
 
-## Validator Tests
+## **Validator Tests**
 
 ### W3C HTML
 
@@ -720,13 +702,11 @@ All JavaScript files in the project have been run through the [JavaScript ESLint
 
 ![Javascript Validator](readme/images/javascript.png)
 
-[Back to top](<#contents>)
-
 ### Flake8
 
 Flake8 errors recticied, apart from one or too lines to long that caused the code not to run correctly when rectified. 
 
-### Manual Tests
+[Back to top](<#contents>)
 
 # **Responsiveness**
 <bt>
@@ -741,6 +721,9 @@ Monitor: 1280 * 1024 / 1600 * 900 / 1950 & UP
 
 The site had been test in Chrome seeming all according to the design. In Firefox. In Internet Explorer all seems to work as the design.
 <br>
+<br>
+
+# **Manual Tests**
 
 ## **Navbar**
 
@@ -763,7 +746,7 @@ The site had been test in Chrome seeming all according to the design. In Firefox
 | Search | Render products according to user's input | Click |✅|
 <br>
 
-**Register User**
+**Registered User**
 <br>
 
 | Feature       | Expected           | Action| Result|
@@ -811,7 +794,7 @@ The site had been test in Chrome seeming all according to the design. In Firefox
 | Links in ways to help    | Link to correct pages | - |✅|
 <br>
 
-## **Store Page**
+## **Donate Page**
 
 **Users**
 <br>
@@ -940,10 +923,11 @@ The site had been test in Chrome seeming all according to the design. In Firefox
 
 [Back to top](<#contents>)
 <hr>
+<br>
 
-## Bugs
+# **Bugs**
 
-* Several bug were fixed throughout the testing process. Buttons were displaying with an overlap on small screen sizes which was due to an error with the bootstrap used. There was an issue with the messages not popping up. This was discovered to be related to the mailchimp javascript and was resolved when this was moved to the footer template rather than the base template. 
+* Several bugs were fixed throughout the testing process. Buttons were displaying with an overlap on small screen sizes which was due to an error with the bootstrap used. There was an issue with the messages not popping up. This was discovered to be related to the mailchimp javascript and was resolved when this was moved to the footer template rather than the base template. 
 
 * The shopping bag was allowing the decrement buttons to select minus amount of product. When updated this just removes the item from the bag so is not affecting checkout. This was fixed.
 
@@ -954,8 +938,9 @@ The site had been test in Chrome seeming all according to the design. In Firefox
 * Functionality was added for users to be able to edit or delete their own comments, however this was not functioning correctly. This was found to be due to user.username not being recognised. Once email was used as the parameter this functioned well. 
 
 [Back to top](<#contents>)
+<br>
 
-# Technologies Used
+# **Technologies Used**
 
 ### Languages Used
 
@@ -965,7 +950,7 @@ The site had been test in Chrome seeming all according to the design. In Firefox
 * Django
 * Python
 
-#### Django Packages
+### Django Packages
 
 * Gunicorn
 * Cloudinary
@@ -988,7 +973,7 @@ The site had been test in Chrome seeming all according to the design. In Firefox
 
 [Back to top](<#contents>)
 
-# Deployment
+# **Deployment**
 
 ## Creating the Django app
 
@@ -1033,7 +1018,7 @@ The site had been test in Chrome seeming all according to the design. In Firefox
 
 [Back to top](<#contents>)
 
-# Credits
+# **Credits**
 
 ## Media
 
