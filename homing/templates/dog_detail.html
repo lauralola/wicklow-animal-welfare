@@ -10,7 +10,7 @@
 
 {% block content %}
 {% load crispy_forms_tags %}
-
+    <div class="overlay"></div>
     <div class="masthead">
         <div class="container">
             <div class="row g-0">
@@ -20,7 +20,7 @@
                 </div>
                 <div class="d-none d-md-block col-md-6 masthead-image">
                     {% if "placeholder" in dog.featured_image.url %}
-                    <img src="https://codeinstitute.s3.amazonaws.com/fullstack/blog/default.jpg" width="100%">
+                    <img src="{{ MEDIA_URL }}noimage.png" width="100%">
                     {% else %}
                     <img src=" {{ dog.featured_image.url }}" width="100%">
                     {% endif %}
@@ -108,7 +108,7 @@
                         {{ comment.body | linebreaks }}
                     </div>
                     <!-- Links to edit, delete and login -->
-                    {% if user.is_authenticated and user.username == comment.name or user.is_superuser %}
+                    {% if user.is_authenticated and user.email == comment.email or user.is_superuser %}
                     <a href="{% url 'edit_comment' comment.id %}" class="btn" aria-label="Go to the Edit Comments Page">Edit</a>
                     <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#delete-comment">Delete</button>
                         <!-- Delete comment bootstrap modal-->

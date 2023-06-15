@@ -24,7 +24,7 @@
                             <div class="image-container">
                                 {% if "placeholder" in dog.featured_image.url %}
                                 <img class="card-img-top"
-                                    src="https://codeinstitute.s3.amazonaws.com/fullstack/blog/default.jpg">
+                                    src="{{ MEDIA_URL }}noimage.png">
                                 {% else %}
                                 <img class="card-img-top" src=" {{ dog.featured_image.url }}">
                                 {% endif %}

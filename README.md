@@ -866,9 +866,9 @@ The site had been test in Chrome seeming all according to the design. In Firefox
 | Feature       | Expected           | Action| Result|
 | ------------- |:-------------| :-----|-----:|
 | Comment and like sections       | Can add comments and likes to dog profile  | Click |✅|
-| Edit own comments       | Can edit user comments  | Click |Not functionning correctly|
+| Edit own comments       | Can edit user comments  | Click |✅|
 | Cannot edit or delete others comments       | If try message pops up  | Click |✅|
-| Delete own comments       | Can delete own comments| Click |Not functionning correctly|
+| Delete own comments       | Can delete own comments after warning popup| Click ||✅||
 <br>
 
 **Unregistered Users**
@@ -954,7 +954,7 @@ The site had been test in Chrome seeming all according to the design. In Firefox
 
 * Issue with webhooks was found to be due to an error in the WH secret key. 
 
-* Functionality was added for users to be able to edit or delete their own comments, however this is not functioning correctly and requires further work. 
+* Functionality was added for users to be able to edit or delete their own comments, however this was not functioning correctly. This was found to be due to user.username not being recognised. Once email was used as the parameter this functioned well. 
 
 [Back to top](<#contents>)
 
